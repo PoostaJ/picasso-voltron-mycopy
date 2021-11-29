@@ -18,3 +18,10 @@ See the specification for Picasso on the course web site
 `doc` - the Javadocs for the project
 
 The `images` directory contains some sample images generated from Picasso.  Some of the expressions for these images can be found in the `expressions` directory.
+
+## Names
+
+Jackson Jacobs
+Patrick Stoffel
+Dan Nguyen 
+Dario Fumarola
