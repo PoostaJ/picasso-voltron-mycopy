@@ -3,14 +3,14 @@ package picasso.view.commands;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.JTextField;
+
 import picasso.model.Pixmap;
 import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.util.Command;
 import picasso.view.Frame;
 import picasso.view.ButtonPanel;
-import picasso.Main;
-import picasso.view.Frame;
 
 
 /**
@@ -22,17 +22,18 @@ import picasso.view.Frame;
 public class Evaluater implements Command<Pixmap> {
 	public static final double DOMAIN_MIN = -1;
 	public static final double DOMAIN_MAX = 1;
-	String input;
+	private JTextField box;
 	
-	public Evaluater(String input) {
-		this.input=input;
+	public Evaluater(JTextField box) {
+		this.box= box;
 	}
 	/**
 	 * Evaluate an expression for each point in the image.
 	 */
 	public void execute(Pixmap target) {
+		String input= box.getText();
 		// create the expression to evaluate just once
-		ExpressionTreeNode expr = createExpression(this.input);
+		ExpressionTreeNode expr = createExpression(input);
 		// evaluate it for each pixel
 		Dimension size = target.getSize();
 		for (int imageY = 0; imageY < size.height; imageY++) {
