@@ -45,7 +45,7 @@ public class ButtonPanel extends JPanel {
 		});
 		add(button);
 	}
-
+	
 	/**
 	 * Add the given Command as a button. The button's text will be the given
 	 * command's name.
