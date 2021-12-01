@@ -2,11 +2,13 @@ package picasso.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import picasso.model.Pixmap;
 import picasso.util.ThreadedCommand;
 import picasso.view.commands.*;
+import java.awt.event.*;
+
 
 /**
  * Main container for the Picasso application
@@ -16,22 +18,28 @@ import picasso.view.commands.*;
  */
 @SuppressWarnings("serial")
 public class Frame extends JFrame {
+	protected JTextField myField;
+	private ButtonPanel commands;
+
 	public Frame(Dimension size) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		// create GUI components
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
-
+    
+		myField= new JTextField(20);
 		// add commands to test here
-		ButtonPanel commands = new ButtonPanel(canvas);
+		commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
-		commands.add("Evaluate", new ThreadedCommand<Pixmap>(canvas, new Evaluater()));
-		commands.add("Save", new Writer());
-
+		commands.add(myField);
+		commands.add("Evaluater", new ThreadedCommand<Pixmap>(canvas, new Evaluater(myField)));
+		commands.add("Save", new Writer());		
+		
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
 		pack();
 	}
+
 }
