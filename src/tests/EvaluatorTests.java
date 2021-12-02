@@ -47,6 +47,10 @@ public class EvaluatorTests {
 		}
 	}
 
+	@Test
+	public void testSinEvaluation() {
+		//TODO: I am not sure how to test this?
+	}
 	// TODO: More tests of evaluation
 
 }
