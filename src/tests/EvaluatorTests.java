@@ -65,6 +65,12 @@ public class EvaluatorTests {
 		for (int i= -1; i<=1; i++) {
 			assertEquals(new RGBColor(Math.sin(i), Math.sin(i), Math.sin(i)), expr.evaluate(i, i));
 		}
+		
+		String s3= "sin(y)";
+		expr=expTreeGen.makeExpression(s3);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.sin(i), Math.sin(i), Math.sin(i)), expr.evaluate(i, i));
+		}
 	}
 	// TODO: More tests of evaluation
 
