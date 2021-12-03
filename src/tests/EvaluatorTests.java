@@ -47,6 +47,24 @@ public class EvaluatorTests {
 		}
 	}
 
+	@Test
+	public void testAbsEvaluation() {
+		String abs1 = "abs(1)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		
+		ExpressionTreeNode expr = expTreeGen.makeExpression(abs1);
+		for ( int i = -1; i <= 1; i++ ) {
+			assertEquals(new RGBColor(Math.abs(1), Math.abs(1), Math.abs(1)), expr.evaluate(i, i));
+		}
+		
+		String abs2 = "abs(x)";
+		expr = expTreeGen.makeExpression(abs2);
+		for ( int i = -1; i <= 1; i++ ) {
+			assertEquals(new RGBColor(Math.abs(i), Math.abs(i), Math.abs(i)), expr.evaluate(i, i));
+		}
+		
+	}
+	
 	// TODO: More tests of evaluation
 
 }
