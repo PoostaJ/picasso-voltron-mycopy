@@ -224,9 +224,12 @@ public class EvaluatorTests {
 			assertEquals(new RGBColor(-1.1, -1.1, -1.1), expr.evaluate(i, i));
 		}
 		
-		
+		String s7= "x + y";
+		expr=expTreeGen.makeExpression(s7);
+		for (int i=-1; i<=1; i++) {
+			assertEquals(new RGBColor(i+i, i+i, i+i), expr.evaluate(i, i));
 		
 				
 	}
-
+	}
 }
