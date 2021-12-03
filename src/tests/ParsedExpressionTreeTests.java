@@ -92,4 +92,11 @@ public class ParsedExpressionTreeTests {
 				
 	}
 
+	@Test
+	public void cosFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("cos(x)");
+		assertEquals(new Cos(new X()), e);
+				
+	}
+
 }
