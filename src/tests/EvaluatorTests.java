@@ -91,6 +91,28 @@ public class EvaluatorTests {
 		}
 	}
 
+  @Test
+	public void testCosEvaluation() {
+		String s= "cos(1)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.cos(1), Math.cos(1), Math.cos(1)), expr.evaluate(i, i));
+		}
+		
+		String s2= "cos(x)";
+		expr=expTreeGen.makeExpression(s2);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.cos(i), Math.cos(i), Math.cos(i)), expr.evaluate(i, i));
+		}
+		
+		String s3= "cos(y)";
+		expr=expTreeGen.makeExpression(s3);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.cos(i), Math.cos(i), Math.cos(i)), expr.evaluate(i, i));
+		}
+	}
+
 	// TODO: More tests of evaluation
 
 }
