@@ -19,6 +19,7 @@ import picasso.parser.language.expressions.*;
  */
 public class ParsedExpressionTreeTests {
 
+
 	private ExpressionTreeGenerator parser;
 
 	@BeforeEach
@@ -42,26 +43,26 @@ public class ParsedExpressionTreeTests {
 	@Test
 	public void additionExpressionTests() {
 		ExpressionTreeNode e = parser.makeExpression("x + y");
-		assertEquals(new Addition(new X(), new Y()), e);
+		//assertEquals(new Plus(new X(), new Y()), e);
 		
 		// no spaces!
 		//ExpressionTreeNode e = parser.makeExpression("x+y");
-		assertEquals(new Addition(new X(), new Y()), e);
+		//assertEquals(new Plus(new X(), new Y()), e);
 
 		e = parser.makeExpression("[1,.3,-1] + y");
-		assertEquals(new Addition(new RGBColor(1, .3, -1), new Y()), e);
+		//assertEquals(new Plus(new RGBColor(1, .3, -1), new Y()), e);
 		
 		e = parser.makeExpression("x + y + [ -.51, 0, 1]");
-		assertEquals(new Addition(new Addition(new X(), new Y()), new RGBColor(-.51, 0, 1)), e);
+		//assertEquals(new Plus(new Addition(new X(), new Y()), new RGBColor(-.51, 0, 1)), e);
 	}
 
 	@Test
 	public void parenthesesExpressionTests() {
 		ExpressionTreeNode e = parser.makeExpression("( x + y )");
-		assertEquals(new Addition(new X(), new Y()), e);
+		//assertEquals(new Plus(new X(), new Y()), e);
 
 		e = parser.makeExpression("( x + (y + [ 1, 1, 1] ) )");
-		assertEquals(new Addition(new X(), new Addition(new Y(), new RGBColor(1, 1, 1))), e);
+		//assertEquals(new Plus(new X(), new Addition(new Y(), new RGBColor(1, 1, 1))), e);
 	}
 	*/
 	
@@ -69,6 +70,21 @@ public class ParsedExpressionTreeTests {
 	public void floorFunctionTests() {
 		ExpressionTreeNode e = parser.makeExpression("floor( x )");
 		assertEquals(new Floor(new X()), e);
+
+
+		e = parser.makeExpression("floor( x + y )");
+		//assertEquals(new Floor(new Plus(new X(), new Y())), e);
+	}
+	
+	@Test
+	public void absoluteValueFunctionTest() {
+		ExpressionTreeNode e = parser.makeExpression("abs( x )");
+		assertEquals(new Abs(new X()), e);
+		
+		e = parser.makeExpression("floor( x + y )"); 
+		//assertEquals(new Abs(new Plus(new X(), new Y())), e);
+	}
+
 
 		//e = parser.makeExpression("floor( x + y )");
 		//assertEquals(new Floor(new Addition(new X(), new Y())), e);
@@ -80,4 +96,5 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Sin(new X()), e);
 				
 	}
+
 }
