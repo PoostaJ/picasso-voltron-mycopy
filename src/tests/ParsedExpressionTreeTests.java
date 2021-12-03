@@ -84,11 +84,6 @@ public class ParsedExpressionTreeTests {
 		e = parser.makeExpression("floor( x + y )"); 
 		//assertEquals(new Abs(new Plus(new X(), new Y())), e);
 	}
-
-
-		//e = parser.makeExpression("floor( x + y )");
-		//assertEquals(new Floor(new Addition(new X(), new Y())), e);
-	}
 	
 	@Test
 	public void sinFunctionTests() {

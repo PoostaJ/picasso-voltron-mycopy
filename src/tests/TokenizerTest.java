@@ -96,6 +96,7 @@ public class TokenizerTest {
 		assertEquals(new AbsToken(), tokens.get(0));
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("x"), tokens.get(2));
+	}
 
   @Test
 	public void testTokenizeSinFunctionExpression() {
