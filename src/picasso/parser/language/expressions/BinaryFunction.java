@@ -38,30 +38,7 @@ public abstract class BinaryFunction extends ExpressionTreeNode {
 		String classname = this.getClass().getName();
 		return classname.substring(classname.lastIndexOf(".")) + "(" + left + "," + right + ")";
 	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (o == this) {
-			return true;
-		}
-
-		if (!(o instanceof BinaryFunction)) {
-			return false;
-		}
-
-		// Make sure the objects are the same type
-
-		if (o.getClass() != this.getClass()) {
-			return false;
-		}
-
-		BinaryFunction uf = (BinaryFunction) o;
-
-		// check if their parameters are equal
-		if (!this.left.equals(uf.left)) {
-			return false;
-		}
-		return true;
-	}
+	
+	public abstract boolean equals(Object obj);
 
 }

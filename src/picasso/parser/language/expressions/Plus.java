@@ -3,7 +3,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the floor function in the Picasso language.
+ * Represents the + operation in the Picasso language.
  * 
  * @author Robert C. Duvall
  * @author Sara Sprenkle
@@ -12,19 +12,20 @@ import picasso.parser.language.ExpressionTreeNode;
 public class Plus extends BinaryFunction {
 
 	/**
-	 * Create a floor expression that takes as a parameter the given expression
+	 * Implement the + operation on the left and right expressions
 	 * 
-	 * @param param the expression to floor
+	 * @param left      left expression
+	 * @param right     right expression
 	 */
 	public Plus(ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left, right);
 	}
 
 	/**
-	 * Evaluates this expression at the given x,y point by evaluating the floor of
+	 * Evaluates this expression at the given x,y point by evaluating the sum of
 	 * the function's parameter.
 	 * 
-	 * @return the color from evaluating the floor of the expression's parameter
+	 * @return the color from evaluating the sum of the expression's parameter
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
@@ -52,7 +53,20 @@ public class Plus extends BinaryFunction {
 			return false;
 		}
 		Plus f = (Plus) obj;
-		return left.equals(f.left);
+		
+		if (left.equals(f.left) && right.equals(f.right)) {
+			return true;
+		}
+		
+		if (left.equals(f.right) && right.equals(f.left)) {
+			return true;
+		}
+		
+		else {
+			return false;
+		}
+		
+		
 	}
 
 }
