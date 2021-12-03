@@ -38,7 +38,8 @@ public class ParsedExpressionTreeTests {
 		ExpressionTreeNode e = parser.makeExpression("x");
 		assertEquals(new X(), e);
 	}
-
+	
+	/**
 	@Test
 	public void additionExpressionTests() {
 		ExpressionTreeNode e = parser.makeExpression("x + y");
@@ -63,11 +64,13 @@ public class ParsedExpressionTreeTests {
 		e = parser.makeExpression("( x + (y + [ 1, 1, 1] ) )");
 		//assertEquals(new Plus(new X(), new Addition(new Y(), new RGBColor(1, 1, 1))), e);
 	}
-
+	*/
+	
 	@Test
 	public void floorFunctionTests() {
 		ExpressionTreeNode e = parser.makeExpression("floor( x )");
 		assertEquals(new Floor(new X()), e);
+
 
 		e = parser.makeExpression("floor( x + y )");
 		//assertEquals(new Floor(new Plus(new X(), new Y())), e);
@@ -80,6 +83,18 @@ public class ParsedExpressionTreeTests {
 		
 		e = parser.makeExpression("floor( x + y )"); 
 		//assertEquals(new Abs(new Plus(new X(), new Y())), e);
+	}
+
+
+		//e = parser.makeExpression("floor( x + y )");
+		//assertEquals(new Floor(new Addition(new X(), new Y())), e);
+	}
+	
+	@Test
+	public void sinFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("sin(x)");
+		assertEquals(new Sin(new X()), e);
+				
 	}
 
 }
