@@ -115,4 +115,162 @@ public class EvaluatorTests {
 
 	// TODO: More tests of evaluation
 
+	@Test
+	public void testCeilEvaluation() {
+		String s0= "ceil(1)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s0);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.ceil(1), Math.ceil(1), Math.ceil(1)), expr.evaluate(i, i));
+		}
+		
+		String s1= "ceil(0.5)";
+		expr=expTreeGen.makeExpression(s1);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.ceil(1), Math.ceil(1), Math.ceil(1)), expr.evaluate(i, i));
+		}
+		
+		String s2= "ceil(0)";
+		expr=expTreeGen.makeExpression(s2);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.ceil(0), Math.ceil(0), Math.ceil(0)), expr.evaluate(i, i));
+		}
+		
+		String s3= "ceil(-0.5)";
+		expr=expTreeGen.makeExpression(s3);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.ceil(0), Math.ceil(0), Math.ceil(0)), expr.evaluate(i, i));
+		}
+		
+		String s4= "ceil(-1)";
+		expr=expTreeGen.makeExpression(s4);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-1,-1,-1), expr.evaluate(i, i));
+		}
+		
+		String s5= "ceil(-1 + -1)";
+		expr=expTreeGen.makeExpression(s5);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.ceil(-2), Math.ceil(-2), Math.ceil(-2)), expr.evaluate(i, i));
+		}
+		
+		String s6= "ceil(x)";
+		expr=expTreeGen.makeExpression(s6);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.ceil(i), Math.ceil(i), Math.ceil(i)), expr.evaluate(i, i));
+		}
+		
+		String s7= "ceil(y)";
+		expr=expTreeGen.makeExpression(s7);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.ceil(i), Math.ceil(i), Math.ceil(i)), expr.evaluate(i, i));
+		}		
+	}
+	
+	@Test
+	public void testFloorEvaluation() {
+		String s0= "floor(1)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s0);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.floor(1), Math.floor(1), Math.floor(1)), expr.evaluate(i, i));
+		}
+		
+		String s1= "floor(0.5)";
+		expr=expTreeGen.makeExpression(s1);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.floor(0.5), Math.floor(0.5), Math.floor(0.5)), expr.evaluate(i, i));
+		}
+		
+		String s2= "floor(0)";
+		expr=expTreeGen.makeExpression(s2);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.floor(0), Math.floor(0), Math.floor(0)), expr.evaluate(i, i));
+		}
+		
+		String s3= "floor(-0.5)";
+		expr=expTreeGen.makeExpression(s3);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.floor(-0.5), Math.floor(-0.5), Math.floor(-0.5)), expr.evaluate(i, i));
+		}
+		
+		String s4= "floor(-1)";
+		expr=expTreeGen.makeExpression(s4);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-1,-1,-1), expr.evaluate(i, i));
+		}
+		
+		String s5= "floor(-1 + -1)";
+		expr=expTreeGen.makeExpression(s5);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.floor(-2), Math.floor(-2), Math.floor(-2)), expr.evaluate(i, i));
+		}
+		
+		String s6= "floor(x)";
+		expr=expTreeGen.makeExpression(s6);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.floor(i), Math.floor(i), Math.floor(i)), expr.evaluate(i, i));
+		}
+		
+		String s7= "floor(y)";
+		expr=expTreeGen.makeExpression(s7);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.floor(i), Math.floor(i), Math.floor(i)), expr.evaluate(i, i));
+		}		
+	}
+	
+	@Test
+	public void testPlusEvaluation() {
+		String s0= "1+0";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s0);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(1,1,1), expr.evaluate(i, i));
+		}
+		
+		String s1= "1+0.5";
+		expr=expTreeGen.makeExpression(s1);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(1.5, 1.5, 1.5), expr.evaluate(i, i));
+		}
+		
+		
+		String s2= "1 + -1";
+		expr=expTreeGen.makeExpression(s2);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(0, 0, 0), expr.evaluate(i, i));
+		}
+		
+		String s3= "0.1 + 0.3 + 0.1";
+		expr=expTreeGen.makeExpression(s3);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(0.5, 0.5, 0.5), expr.evaluate(i, i));
+		}
+		
+		String s4= "-1 + 0";
+		expr=expTreeGen.makeExpression(s4);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-1, -1, -1), expr.evaluate(i, i));
+		}
+		
+		String s5= "-0.5 + -0.3";
+		expr=expTreeGen.makeExpression(s5);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-0.8, -0.8, -0.8), expr.evaluate(i, i));
+		}
+		
+		String s6= "-0.5 + -0.6";
+		expr=expTreeGen.makeExpression(s6);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-1.1, -1.1, -1.1), expr.evaluate(i, i));
+		}
+		
+		String s7= "x + y";
+		expr=expTreeGen.makeExpression(s7);
+		for (int i=-1; i<=1; i++) {
+			assertEquals(new RGBColor(i+i, i+i, i+i), expr.evaluate(i, i));
+		
+				
+	}
+	}
 }
