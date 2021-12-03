@@ -11,14 +11,14 @@ import java.lang.Math;
  * @author Patrick Stoffel
  *
  */
-public class AbsoluteValue extends UnaryFunction {
+public class Abs extends UnaryFunction {
 
 	/**
 	 * Create an absolute value expression that takes as a parameter the given expression
 	 * 
 	 * @param param the expression to floor
 	 */
-	public AbsoluteValue(ExpressionTreeNode param) {
+	public Abs(ExpressionTreeNode param) {
 		super(param);
 	}
 
@@ -48,10 +48,10 @@ public class AbsoluteValue extends UnaryFunction {
 		if (obj == this) {
 			return true;
 		}
-		if (!(obj instanceof AbsoluteValue)) {
+		if (!(obj instanceof Abs)) {
 			return false;
 		}
-		AbsoluteValue f = (AbsoluteValue) obj;
+		Abs f = (Abs) obj;
 		return param.equals(f.param);
 	}
 
