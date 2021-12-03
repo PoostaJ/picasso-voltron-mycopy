@@ -52,6 +52,24 @@ public class EvaluatorTests {
 	}
 
 	@Test
+	public void testAbsEvaluation() {
+		String abs1 = "abs(1)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		
+		ExpressionTreeNode expr = expTreeGen.makeExpression(abs1);
+		for ( int i = -1; i <= 1; i++ ) {
+			assertEquals(new RGBColor(Math.abs(1), Math.abs(1), Math.abs(1)), expr.evaluate(i, i));
+		}
+		
+		String abs2 = "abs(x)";
+		expr = expTreeGen.makeExpression(abs2);
+		for ( int i = -1; i <= 1; i++ ) {
+			assertEquals(new RGBColor(Math.abs(i), Math.abs(i), Math.abs(i)), expr.evaluate(i, i));
+		}
+		
+	}
+	
+  @Test
 	public void testSinEvaluation() {
 		String s= "sin(1)";
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
@@ -72,6 +90,29 @@ public class EvaluatorTests {
 			assertEquals(new RGBColor(Math.sin(i), Math.sin(i), Math.sin(i)), expr.evaluate(i, i));
 		}
 	}
+
+  @Test
+	public void testCosEvaluation() {
+		String s= "cos(1)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.cos(1), Math.cos(1), Math.cos(1)), expr.evaluate(i, i));
+		}
+		
+		String s2= "cos(x)";
+		expr=expTreeGen.makeExpression(s2);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.cos(i), Math.cos(i), Math.cos(i)), expr.evaluate(i, i));
+		}
+		
+		String s3= "cos(y)";
+		expr=expTreeGen.makeExpression(s3);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.cos(i), Math.cos(i), Math.cos(i)), expr.evaluate(i, i));
+		}
+	}
+
 	// TODO: More tests of evaluation
 
 	@Test
