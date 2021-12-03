@@ -14,6 +14,7 @@ import picasso.parser.language.expressions.X;
 import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
+import picasso.parser.tokens.operations.*;
 
 public class TokenizerTest {
 
@@ -98,6 +99,15 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
+	
+	@Test
+	public void testTokenizePlusFunctionExpression() {
+		String expression= "x+y";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("x"), tokens.get(0));
+		assertEquals(new PlusToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+	}
 
 	@Test
 	public void testTokenizeCombinedFunctionExpression() {
@@ -106,6 +116,9 @@ public class TokenizerTest {
 		// TODO: Check the tokens...
 
 		expression = "sin(perlinColor(x, y))";
+		tokens = tokenizer.parseTokens(expression);
+		
+		expression = "perlinColor(x + y)";
 		tokens = tokenizer.parseTokens(expression);
 		// TODO: Check the tokens...
 	}
