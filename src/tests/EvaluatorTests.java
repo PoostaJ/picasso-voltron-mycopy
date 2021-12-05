@@ -269,8 +269,17 @@ public class EvaluatorTests {
 		expr=expTreeGen.makeExpression(s7);
 		for (int i=-1; i<=1; i++) {
 			assertEquals(new RGBColor(i+i, i+i, i+i), expr.evaluate(i, i));
-		
-				
+		}
 	}
+	
+	@Test
+	public void testAtanEvaluation() {
+		String s= "atan(1)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.atan(1), Math.atan(1), Math.atan(1)), expr.evaluate(i, i));
+		}
 	}
+	
 }
