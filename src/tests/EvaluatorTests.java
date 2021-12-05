@@ -280,6 +280,20 @@ public class EvaluatorTests {
 		for (int i= -1; i<=1; i++) {
 			assertEquals(new RGBColor(Math.atan(1), Math.atan(1), Math.atan(1)), expr.evaluate(i, i));
 		}
+		
+		String s2= "atan(x)";
+		expTreeGen = new ExpressionTreeGenerator();
+		expr= expTreeGen.makeExpression(s2);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.atan(i), Math.atan(i), Math.atan(i)), expr.evaluate(i, i));
+		}
+		
+		String s3= "atan(x+y)";
+		expTreeGen = new ExpressionTreeGenerator();
+		expr= expTreeGen.makeExpression(s3);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.atan(i+i), Math.atan(i+i), Math.atan(i+i)), expr.evaluate(i, i));
+		}
 	}
 	
 }
