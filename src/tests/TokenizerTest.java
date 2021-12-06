@@ -119,7 +119,7 @@ public class TokenizerTest {
 	}
 
 
-  @Test
+	@Test
 	public void testTokenizeCosFunctionExpression() {
 		String expression= "cos(y)";
 		tokens= tokenizer.parseTokens(expression);
@@ -127,6 +127,21 @@ public class TokenizerTest {
 		assertEquals(new LeftParenToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+  
+	@Test
+	public void testTokenizeMinusFunctionExpression() {
+		String expression= "x-y";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("x"), tokens.get(0));
+		assertEquals(new MinusToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		
+		String expression2= "1 - 1";
+		tokens=tokenizer.parseTokens(expression2);
+		assertEquals(new NumberToken(1), tokens.get(0));
+		assertEquals(new MinusToken(), tokens.get(1));
+		assertEquals(new NumberToken(1), tokens.get(2));
 	}
 
 

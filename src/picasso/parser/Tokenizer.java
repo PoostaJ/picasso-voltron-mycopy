@@ -45,6 +45,7 @@ public class Tokenizer {
 		// a space before a minus sign. Negative numbers will still be
 		// seen as numbers, and the space will mark the end of a word.
 		s = s.replace("-", " -");
+		System.out.println(s);
 
 		tokenizer = new StreamTokenizer(new StringReader(s));
 		tokenizer.quoteChar(CharConstants.QUOTE);

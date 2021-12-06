@@ -273,4 +273,20 @@ public class EvaluatorTests {
 				
 	}
 	}
+	
+	@Test
+	public void testMinusEvaluation() {
+		String s= "x-y";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(i-i,i-i,i-i), expr.evaluate(i, i));
+		}
+		String s1= "1 - 1";
+		expTreeGen = new ExpressionTreeGenerator();
+		expr= expTreeGen.makeExpression(s1);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(1 - 1,1 - 1,1 - 1), expr.evaluate(i, i));
+		}
+	}
 }
