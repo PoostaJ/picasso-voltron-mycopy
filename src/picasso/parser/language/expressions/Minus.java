@@ -29,8 +29,8 @@ public class Minus extends BinaryFunction {
 	@Override
 	public RGBColor evaluate(double x, double y) {
 		
-		RGBColor leftColor = right.evaluate(x, y);
-		RGBColor rightColor = left.evaluate(x, y);
+		RGBColor leftColor = left.evaluate(x, y);
+		RGBColor rightColor = right.evaluate(x, y);
 		double red = leftColor.getRed() + -rightColor.getRed();
 		double green = leftColor.getGreen() + -rightColor.getGreen();
 		double blue = leftColor.getBlue() + -rightColor.getBlue();
