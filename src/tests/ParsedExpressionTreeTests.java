@@ -117,5 +117,11 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Cos(new X()), e);
 				
 	}
+	
+	@Test
+	public void RGB2YCRCRFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("RGB2YCRCR(y)");
+		assertEquals(new RGB2YCRCR(new Y()), e);
+	}
 
 }

@@ -69,7 +69,7 @@ public class EvaluatorTests {
 		
 	}
 	
-  @Test
+	@Test
 	public void testSinEvaluation() {
 		String s= "sin(1)";
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
@@ -91,7 +91,7 @@ public class EvaluatorTests {
 		}
 	}
 
-  @Test
+	@Test
 	public void testCosEvaluation() {
 		String s= "cos(1)";
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
@@ -273,4 +273,20 @@ public class EvaluatorTests {
 				
 	}
 	}
-}
+	
+	@Test
+	public void testRGB2YCRCREvaluation() {
+		String s= "RGB2YCRCR(x)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+		for (int i= -1; i<=1; i++) {
+			System.out.println(expr.evaluate(i, i));
+			assertEquals(new RGBColor(i * 0.2989 + i * 0.5866 + i * 0.1145,
+					i * -0.1687 + i * -0.3312 + i * 0.5,
+					i * 0.5000 + i * -0.4183 + i * -0.0816),
+					expr.evaluate(i, i));
+		}
+		
+		
+		}
+	}
