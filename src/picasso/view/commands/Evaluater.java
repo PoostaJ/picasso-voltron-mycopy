@@ -11,6 +11,7 @@ import picasso.parser.language.ExpressionTreeNode;
 import picasso.util.Command;
 import picasso.view.Frame;
 import picasso.view.ButtonPanel;
+import picasso.parser.language.CharConstants;
 
 
 /**
@@ -32,6 +33,17 @@ public class Evaluater implements Command<Pixmap> {
 	 */
 	public void execute(Pixmap target) {
 		String input= box.getText();
+		
+		if (Assignment.getInstance().returnValue(input)!=null) {
+			input=Assignment.getInstance().get(input);
+		}
+		//check if it is an assignment
+		else if (input.contains(Character.toString(CharConstants.EQUAL))) {
+			Assignment.getInstance().assign(input);
+			String[] arr=input.split(Character.toString(CharConstants.EQUAL));
+			input=arr[1];
+		}
+		
 		// create the expression to evaluate just once
 		ExpressionTreeNode expr = createExpression(input);
 		// evaluate it for each pixel
