@@ -35,9 +35,10 @@ public class Wrap extends UnaryFunction {
 		int redIndex = 0;
 		int greenIndex = 1;
 		int blueIndex = 2;
-		int NumberOfColors = 3;
+		int NumberOfColors = 3; 
 		
 		double originalRed = result.getRed();
+		//System.out.println(originalRed); 
 		double originalGreen = result.getGreen();
 		double originalBlue = result.getBlue();
 		
@@ -48,14 +49,20 @@ public class Wrap extends UnaryFunction {
 		int i;
 		for (i = 0; i < colors.length; i++) {
 			if (originalColors[i] > RGBColor.COLOR_MAX) {
-				colors[i] = RGBColor.COLOR_MIN + (originalColors[i] - Math.floor(originalColors[i] / RGBColor.COLOR_MAX));
+				colors[i] = RGBColor.COLOR_MIN + (originalColors[i] % 2.0);
 			}
 			
 			if (originalColors[i] < RGBColor.COLOR_MIN) {
-				colors[i] = RGBColor.COLOR_MAX - ((originalColors[i] * (-1) - Math.floor((originalColors[i] * (-1)) / RGBColor.COLOR_MAX))) ;
+				colors[i] = RGBColor.COLOR_MAX - (Math.abs(originalColors[i]) % 2.0) ;
 			}
+			
+			else {
+				colors[i] = originalColors[i]; 
+			}
+			
+			System.out.println(colors[i]);
 		}
-		
+	
 		double red = colors[redIndex];
 		double green = colors[greenIndex];
 		double blue = colors[blueIndex];

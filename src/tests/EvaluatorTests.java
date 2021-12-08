@@ -360,7 +360,26 @@ public class EvaluatorTests {
 		for (int i=-1; i<=1 && i != 0; i++) {
 			assertEquals(new RGBColor(Math.log(Math.abs(i)), Math.log(Math.abs(i)), Math.log(Math.abs(i))), expr.evaluate(i, i));
 		}
-		
-		
+			
+	}
+	
+	@Test
+	public void testWrapEvaluation1() {
+		String s0= "wrap(1+0.5)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s0);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-0.5,-0.5,-0.5), expr.evaluate(i, i));
+		}
+	}
+	
+	@Test
+	public void testWrapEvaluation2(){
+		String s1= "wrap(1+1)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s1);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(0,0,0), expr.evaluate(i, i));
+		}
 	}
 }

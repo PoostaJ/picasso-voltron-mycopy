@@ -20,7 +20,7 @@ public class WrapAnalyzer extends UnaryFunctionAnalyzer {
 		tokens.pop(); 
 		
 		return new Wrap(SemanticAnalyzer.getInstance().generateExpressionTree(
-				tokens));
+				tokens));     
 	}
 
 }
