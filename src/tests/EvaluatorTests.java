@@ -371,15 +371,54 @@ public class EvaluatorTests {
 		for (int i= -1; i<=1; i++) {
 			assertEquals(new RGBColor(-0.5,-0.5,-0.5), expr.evaluate(i, i));
 		}
-	}
 	
-	@Test
-	public void testWrapEvaluation2(){
 		String s1= "wrap(1+1)";
-		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
-		ExpressionTreeNode expr= expTreeGen.makeExpression(s1);
+		expr=expTreeGen.makeExpression(s1);
 		for (int i= -1; i<=1; i++) {
 			assertEquals(new RGBColor(0,0,0), expr.evaluate(i, i));
 		}
+		
+		String s2= "wrap(1+1+1)";
+		expr=expTreeGen.makeExpression(s2);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-1,-1,-1), expr.evaluate(i, i));
+		}
+		
+		String s3= "wrap(1+0.5)";
+		expr=expTreeGen.makeExpression(s3);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-0.5,-0.5,-0.5), expr.evaluate(i, i));
+		}
+		
+		String s4= "wrap(1)";
+		expr=expTreeGen.makeExpression(s4);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(1,1,1), expr.evaluate(i, i));
+		}
+		
+		String s5= "wrap(-1)";
+		expr=expTreeGen.makeExpression(s5);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-1,-1,-1), expr.evaluate(i, i));
+		}
+		
+		String s6= "wrap(0.5)";
+		expr=expTreeGen.makeExpression(s6);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(0.5,0.5,0.5), expr.evaluate(i, i));
+		}
+		
+		String s7= "wrap(-1 + -0.5)";
+		expr=expTreeGen.makeExpression(s7);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(0.5,0.5,0.5), expr.evaluate(i, i));
+		}
+		
+		String s8= "wrap(-1 + -1 + -0.5)";
+		expr=expTreeGen.makeExpression(s8);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(-0.5, -0.5, -0.5), expr.evaluate(i, i));
+		}
+		
 	}
 }

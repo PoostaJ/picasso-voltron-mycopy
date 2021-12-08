@@ -7,8 +7,7 @@ import picasso.parser.language.expressions.RGBColor;
 /**
  * Represents the wrap function in the Picasso language.
  * 
- * @author Robert C. Duvall
- * @author Sara Sprenkle
+ * @author Dan Nguyen
  * 
  */
 public class Wrap extends UnaryFunction {
@@ -45,22 +44,27 @@ public class Wrap extends UnaryFunction {
 		double[] colors = new double[NumberOfColors];
 		double[] originalColors = {originalRed, originalGreen, originalBlue};
 		
-		
 		int i;
 		for (i = 0; i < colors.length; i++) {
+			
+			if (originalColors[i] <= RGBColor.COLOR_MAX && originalColors[i] >= RGBColor.COLOR_MIN) {
+				colors[i] = originalColors[i];
+			}
+			
 			if (originalColors[i] > RGBColor.COLOR_MAX) {
-				colors[i] = RGBColor.COLOR_MIN + (originalColors[i] % 2.0);
+				//pseudo = originalColors[i] % 2.0;
+				//System.out.println(originalColors[i] + "," + pseudo);
+				colors[i] = RGBColor.COLOR_MIN + ((originalColors[i]-1) % 2.0);
 			}
 			
 			if (originalColors[i] < RGBColor.COLOR_MIN) {
-				colors[i] = RGBColor.COLOR_MAX - (Math.abs(originalColors[i]) % 2.0) ;
+				//System.out.println(Math.abs(originalColors[i]) % 2.0);
+				colors[i] = RGBColor.COLOR_MAX - ((Math.abs(originalColors[i])-1) % 2.0) ;
+				//colors[i] = 1;
 			}
 			
-			else {
-				colors[i] = originalColors[i]; 
-			}
 			
-			System.out.println(colors[i]);
+			//System.out.println(colors[i]);
 		}
 	
 		double red = colors[redIndex];
