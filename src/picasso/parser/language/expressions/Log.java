@@ -3,7 +3,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the floor function in the Picasso language.
+ * Represents the log function in the Picasso language.
  * 
  * @author Dan Nguyen
  * 
@@ -11,7 +11,7 @@ import picasso.parser.language.ExpressionTreeNode;
 public class Log extends UnaryFunction {
 
 	/**
-	 * Create a floor expression that takes as a parameter the given expression
+	 * Create a log expression that takes as a parameter the given expression
 	 * 
 	 * @param param the expression to floor
 	 */
@@ -21,8 +21,7 @@ public class Log extends UnaryFunction {
 	}
 
 	/**
-	 * Evaluates this expression at the given x,y point by evaluating the floor of
-	 * the function's parameter.
+	 * Evaluates the log value of what is passed in
 	 * 
 	 * @return the color from evaluating the floor of the expression's parameter
 	 */
