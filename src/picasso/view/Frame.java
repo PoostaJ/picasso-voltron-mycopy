@@ -43,7 +43,6 @@ public class Frame extends JFrame {
 	}
 	
 	public static void drawException(String errorText) {
-		System.out.println("hello");
 		JFrame errorBox= new JFrame();
 		JOptionPane.showMessageDialog(errorBox, errorText);
 		errorBox.setVisible(true);

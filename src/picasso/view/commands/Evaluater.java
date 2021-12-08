@@ -34,6 +34,7 @@ public class Evaluater implements Command<Pixmap> {
 	 */
 	public void execute(Pixmap target) {
 		String input= box.getText();
+		ExpressionTreeNode expr;
 		
 		//TODO: refactor this so it is all handled in Assignment.java
 		if (Assignment.getInstance().get(input)!=null) {
@@ -45,11 +46,13 @@ public class Evaluater implements Command<Pixmap> {
 			input=arr[1];
 		}
 		
-		// create the expression to evaluate just once
-		ExpressionTreeNode expr = createExpression(input);
-
-		//TODO: CHECK HERE
-
+		try {
+			expr = createExpression(input);
+		}
+		catch (ParseException e) {
+			Frame.drawException(e.getMessage());
+			return;
+		}
 
 
 		// evaluate it for each pixel
@@ -85,13 +88,7 @@ public class Evaluater implements Command<Pixmap> {
 		//String test = "x + y";
 
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
-		try {
-			//System.out.println("e");
-			expTreeGen.makeExpression(ourInput);
-		}
-		catch (ParseException e) {
-			Frame.drawException(e.getMessage());
-		}
+		
 		return expTreeGen.makeExpression(ourInput);
 		
 
