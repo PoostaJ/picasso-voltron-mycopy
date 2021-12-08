@@ -25,7 +25,7 @@ public class Wrap extends UnaryFunction {
 	 * Evaluates this expression at the given x,y point by wrapping the function's parameter.
 	 * 
 	 * 
-	 * @return the color from wrapping the floor of the expression's parameter
+	 * @return the color from wrapping the expression's parameter
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
@@ -84,10 +84,10 @@ public class Wrap extends UnaryFunction {
 		if (obj == this) {
 			return true;
 		}
-		if (!(obj instanceof Floor)) {
+		if (!(obj instanceof Wrap)) {
 			return false;
 		}
-		Floor f = (Floor) obj;
+		Wrap f = (Wrap) obj;
 		return param.equals(f.param);
 	}
 
