@@ -41,5 +41,12 @@ public class Frame extends JFrame {
 		getContentPane().add(commands, BorderLayout.NORTH);
 		pack();
 	}
+	
+	public static void drawException(String errorText) {
+		System.out.println("hello");
+		JFrame errorBox= new JFrame();
+		JOptionPane.showMessageDialog(errorBox, errorText);
+		errorBox.setVisible(true);
+	}
 
 }
