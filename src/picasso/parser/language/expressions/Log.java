@@ -31,24 +31,40 @@ public class Log extends UnaryFunction {
 	public RGBColor evaluate(double x, double y) {
 		RGBColor result = param.evaluate(x, y);
 		
-		double red = result.getRed();
-		double green = result.getGreen();
-		double blue = result.getBlue();
+		//double red = result.getRed();
+		//double green = result.getGreen();
+		//double blue = result.getBlue();
+	
+		int redIndex = 0;
+		int greenIndex = 1;
+		int blueIndex = 2;
+		int NumberOfColors = 3;
 		
-		double [] colors = {red, green, blue};
+		double originalRed = result.getRed();
+		double originalGreen = result.getGreen();
+		double originalBlue = result.getBlue();
+		
+		double[] colors = new double[NumberOfColors];
+		double[] originalColors = {originalRed, originalGreen, originalBlue};
 		
 		int i;
+	
 		for (i = 0; i < colors.length; i++) {
-			if (colors[i] == 0) {
-				colors[i] = 0;
+			if (originalColors[i] == 0.0) {
+				colors[i] = 0.0;
 			}
 			
 			else {
-				colors[i] = Math.log(Math.abs(colors[i]));
+				colors[i] = Math.log(Math.abs(originalColors[i]));
 			}
 		}
 		
+		double red = colors[redIndex];
+		double green = colors[greenIndex];
+		double blue = colors[blueIndex];
+
 		return new RGBColor(red, green, blue);
+		
 	}
 
 	/*
