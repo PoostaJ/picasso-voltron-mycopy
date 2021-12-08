@@ -17,6 +17,11 @@ public class Assignment {
 	private static Assignment ourInstance;
 	private static HashMap<String, String> ourMap;
 	
+	/**
+	 * Make sure that there is only one Assignment hashmap for the application.
+	 * 
+	 * @return the semantic analyzer
+	 */
 	public static Assignment getInstance() {
 		if (ourInstance== null) {
 			ourInstance= new Assignment();
@@ -24,14 +29,29 @@ public class Assignment {
 		return ourInstance;
 	}
 
+	/**
+	 * Assignment Constructor.
+	 */
 	private Assignment() {
 		ourMap= new HashMap<String, String>();
 	}
 	
-	public String returnValue(String key) {
+	/**
+	 * Returns the value associated with the key in the hashmap.
+	 * 
+	 * @param key the key to access the dictionary
+	 * @return the value associated with the key
+	 */
+	public String get(String key) {
 		return ourMap.get(key);
 	}	
 	
+	/**
+	 * Splits the input and assigns one half to the key, the other to the value in
+	 * the hashmap. 
+	 * 
+	 * @param input the input to split and assign key and value to
+	 */
 	public void assign(String input) {
 		String[] a= input.split(Character.toString(CharConstants.EQUAL));
 		String key= a[0];
@@ -40,10 +60,6 @@ public class Assignment {
 		key.strip();
 		
 		ourMap.put(key, value);
-	}
-	
-	public String get(String input) {
-		return ourMap.get(input);
 	}
 }
 

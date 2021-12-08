@@ -35,7 +35,7 @@ public class Evaluater implements Command<Pixmap> {
 		String input= box.getText();
 		
 		//TODO: refactor this so it is all handled in Assignment.java
-		if (Assignment.getInstance().returnValue(input)!=null) {
+		if (Assignment.getInstance().get(input)!=null) {
 			input=Assignment.getInstance().get(input);
 		}
 		else if (input.contains(Character.toString(CharConstants.EQUAL))) {
