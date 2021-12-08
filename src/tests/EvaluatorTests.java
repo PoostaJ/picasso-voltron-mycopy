@@ -273,4 +273,80 @@ public class EvaluatorTests {
 				
 	}
 	}
+	
+	  @Test
+		public void testExpEvaluation() {
+			String s= "exp(1)";
+			ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+			ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+			for (int i= -1; i<=1; i++) {
+				assertEquals(new RGBColor(Math.exp(1), Math.exp(1), Math.exp(1)), expr.evaluate(i, i));
+			}
+			
+			String s2= "exp(x)";
+			expr=expTreeGen.makeExpression(s2);
+			for (int i= -1; i<=1; i++) {
+				assertEquals(new RGBColor(Math.exp(i), Math.exp(i), Math.exp(i)), expr.evaluate(i, i));
+			}
+			
+			String s3= "exp(x+y)";
+			expr=expTreeGen.makeExpression(s3);
+			for (int i= -1; i<=1; i++) {
+				assertEquals(new RGBColor(Math.exp(i+i), Math.exp(i+i), Math.exp(i+i)), expr.evaluate(i, i));
+			}
+		}
+	  
+		@Test
+		public void testMultEvaluation() {
+			String s= "x*y";
+			ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+			ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+			for (int i= -1; i<=1; i++) {
+				assertEquals(new RGBColor(i*i,i*i,i*i), expr.evaluate(i, i));
+			}
+			
+			String s1= "-1*-1";
+			expTreeGen = new ExpressionTreeGenerator();
+			expr= expTreeGen.makeExpression(s1);
+			for (int i= -1; i<=1; i++) {
+				assertEquals(new RGBColor(1, 1, 1), expr.evaluate(i, i));
+			}
+			
+			String s2= "1*-1";
+			expTreeGen = new ExpressionTreeGenerator();
+			expr= expTreeGen.makeExpression(s2);
+			for (int i= -1; i<=1; i++) {
+				assertEquals(new RGBColor(-1, -1, -1), expr.evaluate(i, i));
+			}
+			
+			String s3= "0*-1";
+			expTreeGen = new ExpressionTreeGenerator();
+			expr= expTreeGen.makeExpression(s3);
+			for (int i= -1; i<=1; i++) {
+				assertEquals(new RGBColor(0, 0, 0), expr.evaluate(i, i));
+			}
+			
+			String s4= "1*1";
+			expTreeGen = new ExpressionTreeGenerator();
+			expr= expTreeGen.makeExpression(s4);
+			for (int i= -1; i<=1; i++) {
+				assertEquals(new RGBColor(1, 1, 1), expr.evaluate(i, i));
+			}
+			
+		}
+		
+		@Test
+		public void testYCRCB2RGBEvaluation() {
+			String s= "YCRCB2RGB(x)";
+			ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+			ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+			for (int i= -1; i<=1; i++) {
+				assertEquals(new RGBColor(i + i * 1.4022,
+						i + i * -0.3456 + i * -0.7145,
+						i + i * 1.7710),
+						expr.evaluate(i, i));
+			}
+			
+		}
+	
 }
