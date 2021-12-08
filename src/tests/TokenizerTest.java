@@ -128,6 +128,35 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
+  
+  @Test
+	public void testTokenizeExpFunctionExpression() {
+		String expression= "exp(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new ExpToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+  
+  @Test
+	public void testTokenizeYCRCB2RGBFunctionExpression() {
+		String expression= "YCRCB2RGB(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new YCRCB2RGBToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+  
+	@Test
+	public void testTokenizeMultFunctionExpression() {
+		String expression= "x*y";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("x"), tokens.get(0));
+		assertEquals(new MultToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+	}
 
 
 	@Test

@@ -117,5 +117,26 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Cos(new X()), e);
 				
 	}
+	
+	@Test
+	public void expFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("exp(x)");
+		assertEquals(new Exp(new X()), e);
+				
+	}
+	
+	@Test
+	public void YCRCB2RGBFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("YCRCB2RGB(x)");
+		assertEquals(new YCRCB2RGB(new X()), e);
+				
+	}
+	
+	@Test
+	public void multFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("x*y");
+		assertEquals(new Mult(new X(), new Y()), e);
+				
+	}
 
 }
