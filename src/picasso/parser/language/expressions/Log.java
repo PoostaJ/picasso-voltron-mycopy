@@ -13,7 +13,7 @@ public class Log extends UnaryFunction {
 	/**
 	 * Create a log expression that takes as a parameter the given expression
 	 * 
-	 * @param param the expression to floor
+	 * @param param the expression to log
 	 */
 
 	public Log(ExpressionTreeNode param) {
@@ -23,7 +23,7 @@ public class Log extends UnaryFunction {
 	/**
 	 * Evaluates the log value of what is passed in
 	 * 
-	 * @return the color from evaluating the floor of the expression's parameter
+	 * @return the color from evaluating the log of the expression's parameter
 	 */
 	
 	@Override
@@ -76,10 +76,10 @@ public class Log extends UnaryFunction {
 		if (obj == this) {
 			return true;
 		}
-		if (!(obj instanceof Floor)) {
+		if (!(obj instanceof Log)) {
 			return false;
 		}
-		Floor f = (Floor) obj;
+		Log f = (Log) obj;
 		return param.equals(f.param);
 	}
 
