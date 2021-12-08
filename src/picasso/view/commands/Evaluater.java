@@ -34,10 +34,10 @@ public class Evaluater implements Command<Pixmap> {
 	public void execute(Pixmap target) {
 		String input= box.getText();
 		
+		//TODO: refactor this so it is all handled in Assignment.java
 		if (Assignment.getInstance().returnValue(input)!=null) {
 			input=Assignment.getInstance().get(input);
 		}
-		//check if it is an assignment
 		else if (input.contains(Character.toString(CharConstants.EQUAL))) {
 			Assignment.getInstance().assign(input);
 			String[] arr=input.split(Character.toString(CharConstants.EQUAL));
