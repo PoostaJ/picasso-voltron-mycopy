@@ -129,6 +129,18 @@ public class TokenizerTest {
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
   
+
+	@Test
+	public void testTokenizeTanFunctionExpression() {
+		String expression= "tan(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new TanToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+
+
   @Test
 	public void testTokenizeExpFunctionExpression() {
 		String expression= "exp(y)";

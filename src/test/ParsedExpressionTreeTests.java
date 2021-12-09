@@ -119,6 +119,14 @@ public class ParsedExpressionTreeTests {
 	}
 	
 	@Test
+	public void tanFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("tan(x)");
+		assertEquals(new Tan(new X()), e);
+				
+	}
+
+
+	@Test
 	public void expFunctionTests() {
 		ExpressionTreeNode e= parser.makeExpression("exp(x)");
 		assertEquals(new Exp(new X()), e);
