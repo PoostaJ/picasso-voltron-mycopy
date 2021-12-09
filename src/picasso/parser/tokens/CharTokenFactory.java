@@ -38,6 +38,7 @@ public class CharTokenFactory {
 		tokenList[CharConstants.PLUS] = new PlusToken();
 		tokenList[CharConstants.SLASH] = new DivideToken();
 		tokenList[CharConstants.STAR] = new MultToken();
+		tokenList[CharConstants.EXPONENT] = new MultToken();
 
 		// TODO: What other tokens should be in here?
 		// TODO: Need to create the associated Token classes too.
