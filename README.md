@@ -21,7 +21,7 @@ The `images` directory contains some sample images generated from Picasso.  Some
 
 ## Names
 
-Jackson Jacobs
-Patrick Stoffel
-Dan Nguyen 
+Jackson Jacobs <br />
+Patrick Stoffel <br />
+Dan Nguyen <br />
 Dario Fumarola

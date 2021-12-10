@@ -24,6 +24,7 @@ public class ExpressionTreeGenerator {
 	private static final int GROUPING = 1; // parentheses
 	private static final int ADD_OR_SUBTRACT = 2;
 	private static final int MULTIPLY_OR_DIVIDE = 3;
+	private static final int EXPONENT = 3;
 
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
@@ -192,9 +193,11 @@ public class ExpressionTreeGenerator {
 
 		if (token instanceof PlusToken)
 			return ADD_OR_SUBTRACT;
+
 		else if (token instanceof MinusToken) {
 			return ADD_OR_SUBTRACT;
 		}
+
 		else
 			return CONSTANT;
 	}
