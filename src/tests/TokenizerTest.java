@@ -119,7 +119,7 @@ public class TokenizerTest {
 	}
 
 
-  @Test
+	@Test
 	public void testTokenizeCosFunctionExpression() {
 		String expression= "cos(y)";
 		tokens= tokenizer.parseTokens(expression);
@@ -129,6 +129,12 @@ public class TokenizerTest {
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
   
+  @Test
+  public void testTokenizeRgbToYCrCbFunctionExpression() {
+		String expression= "RGB2YCRCR(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new RGB2YCRCRToken(), tokens.get(0));
+  }  
 
 	@Test
 	public void testTokenizeTanFunctionExpression() {

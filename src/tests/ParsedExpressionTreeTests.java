@@ -119,6 +119,12 @@ public class ParsedExpressionTreeTests {
 	}
 	
 	@Test
+	public void RGB2YCRCRFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("RGB2YCRCR(y)");
+		assertEquals(new RGB2YCRCR(new Y()), e);
+  }
+  
+  @Test
 	public void tanFunctionTests() {
 		ExpressionTreeNode e= parser.makeExpression("tan(x)");
 		assertEquals(new Tan(new X()), e);
@@ -151,6 +157,7 @@ public class ParsedExpressionTreeTests {
 	public void atanFunctionTests() {
 		ExpressionTreeNode e= parser.makeExpression("atan(x)");
 		assertEquals(new Atan(new X()), e);
+
 	}
 
 }
