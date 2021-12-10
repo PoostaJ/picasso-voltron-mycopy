@@ -4,7 +4,7 @@ import java.awt.Color;
 import picasso.model.Pixmap;
 import java.awt.Dimension;
 import picasso.view.commands.Evaluater;
-import picasso.parser.language.expressions.*;
+import picasso.parser.language.expressions.RGBColor;
 
 /**
  * Represents the imageWrap function in the Picasso language.
@@ -14,7 +14,7 @@ import picasso.parser.language.expressions.*;
  */
 public class ImageWrap extends MultipleArgumentFunction {
 	
-	Pixmap img = null; 
+	Pixmap img;
 	
 	/**
 	 * Implement the + operation on the left and right expressions
@@ -23,9 +23,9 @@ public class ImageWrap extends MultipleArgumentFunction {
 	 * @param right     right expression
 	 */
 	
-	public ImageWrap(String filename, ExpressionTreeNode left, ExpressionTreeNode right) {
+	public ImageWrap(ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left, right);
-		img.read(filename);
+		img= new Pixmap("images/vortex.jpg");
 	}
 
 	/**
@@ -36,18 +36,17 @@ public class ImageWrap extends MultipleArgumentFunction {
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
+
+		int imageY= (int) Math.round(y);
+		int imageX= (int) Math.round(x);
 		
-		Dimension size = img.getSize();
+		int evalY= wrapHeight(imageY);
+		int evalX= wrapHeight(imageX);
 		
-		for (int imageY = 0; imageY < size.height; imageY++) {
-			int evalY = wrapHeight(imageY);
-			for (int imageX = 0; imageX < size.width; imageX++) {
-				int evalX = wrapWidth(imageX);
-				return RGBColor(img.getColor(evalX, evalY));
-			}
-		}
+		RGBColor newRGB= new RGBColor(img.getColor(evalX, evalY));
+		return newRGB;
 	}
-	
+
 	public int wrapHeight(int value) {
 			
 			if (value > img.getSize().height) {

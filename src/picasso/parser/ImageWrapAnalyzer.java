@@ -19,7 +19,7 @@ public class ImageWrapAnalyzer implements SemanticAnalyzerInterface {
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		tokens.pop(); 
 		
-		return new ImageWrap("vortex.jpg", SemanticAnalyzer.getInstance().generateExpressionTree(
+		return new ImageWrap(SemanticAnalyzer.getInstance().generateExpressionTree(
 				tokens), SemanticAnalyzer.getInstance().generateExpressionTree(
 						tokens) );
 	}
