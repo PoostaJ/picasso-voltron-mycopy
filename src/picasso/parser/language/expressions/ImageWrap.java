@@ -37,49 +37,45 @@ public class ImageWrap extends MultipleArgumentFunction {
 	@Override
 	public RGBColor evaluate(double x, double y) {
 
-		int imageY= (int) Math.round(y);
-		int imageX= (int) Math.round(x);
 		
 		//int evalY = img.getSize().height;
 		//int evalX = img.getSize().width;
-		
-		int evalY= wrapHeight(imageY);
-		int evalX= wrapWidth(imageX);
-		
-		RGBColor newRGB= new RGBColor(img.getColor(evalX, evalY));
+		x = 2*x;
+		double evalY= wrap(y);
+		double evalX= wrap(x);
+		System.out.println("Expected: -.8  Actual: " + evalX);
+		System.out.println("Expected: 79" + " Actual: " + widthToInt(evalX));
+		RGBColor newRGB= new RGBColor(img.getColor(widthToInt(evalX), heightToInt(evalY)));
+		//System.out.println("Expected: "+ x);
+		//System.out.println("Actual: "+ evalX);
 		return newRGB;
 	}
 
-	public int wrapHeight(int value) {
-			
-			if (value > img.getSize().height) {
-				return Math.round(0 + (value % img.getSize().height));
-			}
-			
-			if (value < 0) {
-				return Math.round(img.getSize().height - (Math.abs(value) % img.getSize().height)) ;
-			}
-			
-			else {
-				return value;
-			}
-	}
-	
-	public int wrapWidth(int value) {
-		
-		
-		if (value > img.getSize().width) {
-			return Math.round(value % img.getSize().width);
+	public double wrap(double value) {
+
+		if (value > RGBColor.COLOR_MAX) {
+			return (RGBColor.COLOR_MIN + ((value -1) % 2.0));
 		}
 		
-		if (value < 0) {
-			return Math.round(img.getSize().width - (Math.abs(value) % img.getSize().width)) ;
+		if (value < RGBColor.COLOR_MIN) {
+			return (RGBColor.COLOR_MAX - (Math.abs(value-1) % 2.0)) ;
 		}
 		
 		else {
 			return value;
 		}
-}
+	}
+
+	
+	public int heightToInt(double value) {
+		double range = 2;
+		return (int) ((value+1) /2 * img.getSize().height);
+	}
+	
+	public int widthToInt(double value) {
+		double range = 2;
+		return (int) ((value+1) /2 * img.getSize().width);
+	}
 	
 
 	/*
