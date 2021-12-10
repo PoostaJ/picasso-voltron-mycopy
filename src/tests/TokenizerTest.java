@@ -169,6 +169,16 @@ public class TokenizerTest {
 		assertEquals(new MultToken(), tokens.get(1));
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 	}
+  
+  @Test
+	public void testTokenizeAtanFunctionExpression() {
+		String expression= "atan(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new AtanToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
 
 
 	@Test

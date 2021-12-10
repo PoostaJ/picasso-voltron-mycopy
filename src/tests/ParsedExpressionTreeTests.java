@@ -146,5 +146,11 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Mult(new X(), new Y()), e);
 				
 	}
+  
+  @Test
+	public void atanFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("atan(x)");
+		assertEquals(new Atan(new X()), e);
+	}
 
 }
