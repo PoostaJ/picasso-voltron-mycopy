@@ -76,8 +76,9 @@ public class Tokenizer {
 			tokens.add(result);
 			result = nextToken();
 		}
+		
 
-		// System.out.println("Tokens: " + tokens);
+		//System.out.println("Tokens: " + tokens);
 		return tokens;
 	}
 

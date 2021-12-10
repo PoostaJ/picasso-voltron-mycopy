@@ -83,6 +83,7 @@ public class ExpressionTreeGenerator {
 
 		while (iter.hasNext()) {
 			Token token = iter.next();
+
 			if (token instanceof NumberToken) {
 				postfixResult.push(token);
 			} else if (token instanceof ColorToken) {
@@ -92,6 +93,7 @@ public class ExpressionTreeGenerator {
 			} else if (token instanceof FunctionToken) {
 				operators.push(token);
 			} else if (token instanceof OperationInterface) {
+			
 
 				/*
 				 * while there is an operator, o2, at the top of the stack (this
