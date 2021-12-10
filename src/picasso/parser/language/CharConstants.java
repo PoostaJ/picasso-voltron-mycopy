@@ -25,6 +25,7 @@ public class CharConstants {
 	public static final char UNDER_SCORE = '_';
 	public static final char BACK_SLASH = '\\';
 	public static final char QUESTION = '?';
+	public static final char EXPONENT = '^';
 	public static final char TILDE = '~';
 
 }

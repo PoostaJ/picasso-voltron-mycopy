@@ -99,7 +99,7 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("x"), tokens.get(2));
 	}
 
-	@Test
+  @Test
 	public void testTokenizeSinFunctionExpression() {
 		String expression= "sin(y)";
 		tokens= tokenizer.parseTokens(expression);
@@ -119,7 +119,7 @@ public class TokenizerTest {
 	}
 
 
-	@Test
+  @Test
 	public void testTokenizeCosFunctionExpression() {
 		String expression= "cos(y)";
 		tokens= tokenizer.parseTokens(expression);
@@ -128,8 +128,49 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
-	
+  
+
 	@Test
+	public void testTokenizeTanFunctionExpression() {
+		String expression= "tan(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new TanToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+
+
+  @Test
+	public void testTokenizeExpFunctionExpression() {
+		String expression= "exp(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new ExpToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+  
+  @Test
+	public void testTokenizeYCRCB2RGBFunctionExpression() {
+		String expression= "YCRCB2RGB(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new YCRCB2RGBToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+  
+	@Test
+	public void testTokenizeMultFunctionExpression() {
+		String expression= "x*y";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("x"), tokens.get(0));
+		assertEquals(new MultToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+	}
+  
+  @Test
 	public void testTokenizeAtanFunctionExpression() {
 		String expression= "atan(y)";
 		tokens= tokenizer.parseTokens(expression);
@@ -144,12 +185,14 @@ public class TokenizerTest {
 	public void testTokenizeCombinedFunctionExpression() {
 		String expression = "perlinColor(floor(x), y)";
 		List<Token> tokens = tokenizer.parseTokens(expression);
+		// TODO: Check the tokens...
 
 		expression = "sin(perlinColor(x, y))";
 		tokens = tokenizer.parseTokens(expression);
 		
 		expression = "perlinColor(x + y)";
 		tokens = tokenizer.parseTokens(expression);
+		// TODO: Check the tokens...
 	}
 
 	// TODO: Test arithmetic (rather than function-based) expressions ...
