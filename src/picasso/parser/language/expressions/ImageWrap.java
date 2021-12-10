@@ -37,17 +37,12 @@ public class ImageWrap extends MultipleArgumentFunction {
 	@Override
 	public RGBColor evaluate(double x, double y) {
 
-		
-		//int evalY = img.getSize().height;
-		//int evalX = img.getSize().width;
-		x = 2*x;
-		double evalY= wrap(y);
-		double evalX= wrap(x);
-		System.out.println("Expected: -.8  Actual: " + evalX);
-		System.out.println("Expected: 79" + " Actual: " + widthToInt(evalX));
+		RGBColor leftColor=expr1.evaluate(x, y);
+		RGBColor rightColor=expr2.evaluate(x, y);
+		double evalY= wrap(leftColor.getRed());
+		double evalX= wrap(rightColor.getRed());
+
 		RGBColor newRGB= new RGBColor(img.getColor(widthToInt(evalX), heightToInt(evalY)));
-		//System.out.println("Expected: "+ x);
-		//System.out.println("Actual: "+ evalX);
 		return newRGB;
 	}
 
