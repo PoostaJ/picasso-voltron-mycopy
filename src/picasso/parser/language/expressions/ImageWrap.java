@@ -4,6 +4,7 @@ import java.awt.Color;
 import picasso.model.Pixmap;
 import java.awt.Dimension;
 import picasso.view.commands.Evaluater;
+import picasso.parser.language.expressions.*;
 
 /**
  * Represents the imageWrap function in the Picasso language.
@@ -39,37 +40,45 @@ public class ImageWrap extends MultipleArgumentFunction {
 		Dimension size = img.getSize();
 		
 		for (int imageY = 0; imageY < size.height; imageY++) {
-			double evalY = wrap(imageY);
+			int evalY = wrapHeight(imageY);
 			for (int imageX = 0; imageX < size.width; imageX++) {
-				double evalX = wrap(imageX);
-				Color pixelColor = expr.evaluate(evalX, evalY).toJavaColor();
-				target.setColor(imageX, imageY, pixelColor);
+				int evalX = wrapWidth(imageX);
+				return RGBColor(img.getColor(evalX, evalY));
 			}
 		}
-		
-		RGBColor leftColor = expr1.evaluate(x, y);
-		RGBColor rightColor = expr2.evaluate(x, y);
-		double red = leftColor.getRed() + rightColor.getRed();
-		double green = leftColor.getGreen() + rightColor.getGreen();
-		double blue = leftColor.getBlue() + rightColor.getBlue();
-
-		return new RGBColor(red, green, blue);
 	}
 	
-	public double wrap(double value) {
+	public int wrapHeight(int value) {
 			
-			if (value > RGBColor.COLOR_MAX) {
-				return (RGBColor.COLOR_MIN + ((value -1) % 2.0));
+			if (value > img.getSize().height) {
+				return Math.round(0 + (value % img.getSize().height));
 			}
 			
-			if (value < RGBColor.COLOR_MIN) {
-				return (RGBColor.COLOR_MAX - (Math.abs(value-1) % 2.0)) ;
+			if (value < 0) {
+				return Math.round(img.getSize().height - (Math.abs(value) % img.getSize().height)) ;
 			}
 			
 			else {
 				return value;
 			}
 	}
+	
+	public int wrapWidth(int value) {
+		
+		
+		if (value > img.getSize().width) {
+			return Math.round(0 + (value % img.getSize().width));
+		}
+		
+		if (value < 0) {
+			return Math.round(img.getSize().width - (Math.abs(value) % img.getSize().width)) ;
+		}
+		
+		else {
+			return value;
+		}
+}
+	
 
 	/*
 	 * (non-Javadoc)
