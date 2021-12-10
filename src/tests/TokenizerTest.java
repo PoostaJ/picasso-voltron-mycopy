@@ -129,6 +129,21 @@ public class TokenizerTest {
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
   
+
+	@Test
+	public void testTokenizeMinusFunctionExpression() {
+		String expression= "x-y";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new IdentifierToken("x"), tokens.get(0));
+		assertEquals(new MinusToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		
+		String expression2= "1 - 1";
+		tokens=tokenizer.parseTokens(expression2);
+		assertEquals(new NumberToken(1), tokens.get(0));
+		assertEquals(new MinusToken(), tokens.get(1));
+		assertEquals(new NumberToken(1), tokens.get(2));
+
   @Test
   public void testTokenizeRgbToYCrCbFunctionExpression() {
 		String expression= "RGB2YCRCR(y)";
