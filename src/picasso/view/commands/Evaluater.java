@@ -11,6 +11,8 @@ import picasso.parser.language.ExpressionTreeNode;
 import picasso.util.Command;
 import picasso.view.Frame;
 import picasso.view.ButtonPanel;
+import picasso.parser.language.CharConstants;
+import picasso.parser.ParseException;
 
 
 /**
@@ -32,8 +34,18 @@ public class Evaluater implements Command<Pixmap> {
 	 */
 	public void execute(Pixmap target) {
 		String input= box.getText();
-		// create the expression to evaluate just once
-		ExpressionTreeNode expr = createExpression(input);
+		ExpressionTreeNode expr;
+		input= Assignment.getInstance().check(input);
+		
+		try {
+			expr = createExpression(input);
+		}
+		catch (ParseException e) {
+			Frame.drawException(e.getMessage());
+			return;
+		}
+
+
 		// evaluate it for each pixel
 		Dimension size = target.getSize();
 		for (int imageY = 0; imageY < size.height; imageY++) {
@@ -67,7 +79,9 @@ public class Evaluater implements Command<Pixmap> {
 		//String test = "x + y";
 
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		
 		return expTreeGen.makeExpression(ourInput);
+		
 
 		// return new Multiply( new X(), new Y() );
 	}

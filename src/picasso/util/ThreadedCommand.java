@@ -1,6 +1,7 @@
 package picasso.util;
 
 import javax.swing.JComponent;
+import picasso.view.Frame;
 
 
 /**
