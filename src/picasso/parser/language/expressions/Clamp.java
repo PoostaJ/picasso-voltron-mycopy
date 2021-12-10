@@ -52,11 +52,11 @@ public class Clamp extends UnaryFunction {
 			}
 			
 			if (originalColors[i] > RGBColor.COLOR_MAX) {
-				colors[i] = RGBColor.COLOR_MIN;
+				colors[i] = RGBColor.COLOR_MAX;
 			}
 			
 			if (originalColors[i] < RGBColor.COLOR_MIN) {
-				colors[i] = RGBColor.COLOR_MAX;
+				colors[i] = RGBColor.COLOR_MIN;
 			}
 			
 			
