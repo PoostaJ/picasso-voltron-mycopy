@@ -37,18 +37,6 @@ public class Evaluater implements Command<Pixmap> {
 		ExpressionTreeNode expr;
 		input= Assignment.getInstance().check(input);
 		
-		/**
-		//TODO: refactor this so it is all handled in Assignment.java
-		if (Assignment.getInstance().get(input)!=null) {
-			input=Assignment.getInstance().get(input);
-		}
-		else if (input.contains(Character.toString(CharConstants.EQUAL))) {
-			Assignment.getInstance().assign(input);
-			String[] arr=input.split(Character.toString(CharConstants.EQUAL));
-			input=arr[1];
-		}
-		*/
-		
 		try {
 			expr = createExpression(input);
 		}
