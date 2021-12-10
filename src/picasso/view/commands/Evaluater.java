@@ -35,7 +35,9 @@ public class Evaluater implements Command<Pixmap> {
 	public void execute(Pixmap target) {
 		String input= box.getText();
 		ExpressionTreeNode expr;
+		input= Assignment.getInstance().check(input);
 		
+		/**
 		//TODO: refactor this so it is all handled in Assignment.java
 		if (Assignment.getInstance().get(input)!=null) {
 			input=Assignment.getInstance().get(input);
@@ -45,6 +47,7 @@ public class Evaluater implements Command<Pixmap> {
 			String[] arr=input.split(Character.toString(CharConstants.EQUAL));
 			input=arr[1];
 		}
+		*/
 		
 		try {
 			expr = createExpression(input);

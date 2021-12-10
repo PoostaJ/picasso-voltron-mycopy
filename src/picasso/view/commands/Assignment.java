@@ -1,8 +1,6 @@
 package picasso.view.commands;
 
 import java.util.*;
-import java.lang.*;
-import java.io.*;
 import picasso.parser.language.CharConstants;
 
 /**
@@ -61,8 +59,17 @@ public class Assignment {
 		
 		ourMap.put(key, value);
 	}
+	
+	public String check(String input) {
+		
+		if (get(input)!=null) {
+			input= get(input);
+		}
+		else if (input.contains(Character.toString(CharConstants.EQUAL))) {
+			assign(input);
+			String[] arr=input.split(Character.toString(CharConstants.EQUAL));
+			input=arr[1];
+		}
+		return input;
+	}
 }
-
-	//if map contains key, then return value of key
-	//else if contains equal, then assign right to key of left
-	//else run normally
