@@ -143,9 +143,10 @@ public class TokenizerTest {
 		assertEquals(new NumberToken(1), tokens.get(0));
 		assertEquals(new MinusToken(), tokens.get(1));
 		assertEquals(new NumberToken(1), tokens.get(2));
+	}
 
-  @Test
-  public void testTokenizeRgbToYCrCbFunctionExpression() {
+	@Test
+	public void testTokenizeRgbToYCrCbFunctionExpression() {
 		String expression= "RGB2YCRCR(y)";
 		tokens= tokenizer.parseTokens(expression);
 		assertEquals(new RGB2YCRCRToken(), tokens.get(0));

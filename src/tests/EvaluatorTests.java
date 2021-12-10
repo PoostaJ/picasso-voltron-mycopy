@@ -593,7 +593,7 @@ public class EvaluatorTests {
 			
 			String s3= "1^1";
 			expTreeGen = new ExpressionTreeGenerator();
-			expr= expTreeGen.makeExpression(s4);
+			expr= expTreeGen.makeExpression(s3);
 			for (int i= -1; i<=1; i++) {
 				assertEquals(new RGBColor(1, 1, 1), expr.evaluate(i, i));
 			}
