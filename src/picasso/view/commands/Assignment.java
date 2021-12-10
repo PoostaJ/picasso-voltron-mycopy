@@ -64,6 +64,7 @@ public class Assignment {
 		
 		if (get(input)!=null) {
 			input= get(input);
+			return input;
 		}
 		else if (input.contains(Character.toString(CharConstants.EQUAL))) {
 			assign(input);
