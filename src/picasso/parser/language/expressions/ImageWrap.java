@@ -40,8 +40,11 @@ public class ImageWrap extends MultipleArgumentFunction {
 		int imageY= (int) Math.round(y);
 		int imageX= (int) Math.round(x);
 		
+		//int evalY = img.getSize().height;
+		//int evalX = img.getSize().width;
+		
 		int evalY= wrapHeight(imageY);
-		int evalX= wrapHeight(imageX);
+		int evalX= wrapWidth(imageX);
 		
 		RGBColor newRGB= new RGBColor(img.getColor(evalX, evalY));
 		return newRGB;
@@ -66,7 +69,7 @@ public class ImageWrap extends MultipleArgumentFunction {
 		
 		
 		if (value > img.getSize().width) {
-			return Math.round(0 + (value % img.getSize().width));
+			return Math.round(value % img.getSize().width);
 		}
 		
 		if (value < 0) {
