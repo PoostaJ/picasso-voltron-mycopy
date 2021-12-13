@@ -13,6 +13,7 @@ public abstract class MultipleArgumentFunction extends ExpressionTreeNode {
 	public static final double COLOR_MIN = -1;
 	public static final double COLOR_MAX = 1;
 
+	ExpressionTreeNode filename;
 	ExpressionTreeNode expr1;
 	ExpressionTreeNode expr2;
 
@@ -21,6 +22,7 @@ public abstract class MultipleArgumentFunction extends ExpressionTreeNode {
 	 * @param left
 	 * @param right
 	 */
+	
 	public MultipleArgumentFunction(ExpressionTreeNode expr1, ExpressionTreeNode expr2) {
 		this.expr1 = expr1;
 		this.expr2 = expr2;

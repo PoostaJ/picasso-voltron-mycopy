@@ -69,7 +69,8 @@ public class Tokenizer {
 		Token result = nextToken();
 
 		while (true) {
-
+			
+			
 			if (EOFToken.getInstance().equals(result)) {
 				break;
 			}

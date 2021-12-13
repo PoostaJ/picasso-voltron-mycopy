@@ -5,12 +5,12 @@ import java.util.Stack;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.ImageWrap;
 import picasso.parser.tokens.Token;
+import picasso.parser.tokens.chars.StringToken;
 
 /**
- * Handles parsing the plus or "addition function".
+ * Handles parsing for the function that handles image wrapping.
  * 
- * @author Robert C. Duvall
- * @author Sara Sprenkle
+ * @author Dan Nguyen
  * 
  */
 public class ImageWrapAnalyzer implements SemanticAnalyzerInterface {
@@ -19,9 +19,14 @@ public class ImageWrapAnalyzer implements SemanticAnalyzerInterface {
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		tokens.pop(); 
 		
-		return new ImageWrap(SemanticAnalyzer.getInstance().generateExpressionTree(
-				tokens), SemanticAnalyzer.getInstance().generateExpressionTree(
-						tokens) );
+		ExpressionTreeNode rightExp = SemanticAnalyzer.getInstance().generateExpressionTree(
+				tokens);
+		ExpressionTreeNode leftExp = SemanticAnalyzer.getInstance().generateExpressionTree(
+				tokens);
+		
+		StringToken token = (StringToken) tokens.pop();
+		String value = token.value();
+		return new ImageWrap(value, rightExp, leftExp);
 	}
 
 }
