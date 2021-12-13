@@ -35,6 +35,9 @@ public class Assignment {
 	}
 	
 	public ExpressionTreeNode addExpression(String key, ExpressionTreeNode expr) {
+		if (key.equals("x") || key.equals("y")) {
+			throw new IllegalArgumentException("Cannot assign X or Y to new values!");
+		}
 		ourMap.put(key, expr);
 		return expr;
 	}

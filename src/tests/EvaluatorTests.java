@@ -269,8 +269,25 @@ public class EvaluatorTests {
 		expr=expTreeGen.makeExpression(s7);
 		for (int i=-1; i<=1; i++) {
 			assertEquals(new RGBColor(i+i, i+i, i+i), expr.evaluate(i, i));
+		}
+	}
+	
+	@Test
+	public void testAssignmentEvaluation() {
+		String s= "a=cos(x)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr=expTreeGen.makeExpression(s);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.cos(i),Math.cos(i),Math.cos(i)), expr.evaluate(i, i));
+		}
+		
+		String s2= "hellom=floor(y)";
+		expr=expTreeGen.makeExpression(s2);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.floor(i),Math.floor(i),Math.floor(i)), expr.evaluate(i, i));
+		}
 		
 				
-	}
+	
 	}
 }

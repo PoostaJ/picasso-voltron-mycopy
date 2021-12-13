@@ -45,7 +45,10 @@ public class Evaluater implements Command<Pixmap> {
 			Frame.drawException(e.getMessage());
 			return;
 		}
-
+		catch (IllegalArgumentException e) {
+			Frame.drawException(e.getMessage());
+			return;
+		}
 
 		// evaluate it for each pixel
 		Dimension size = target.getSize();
