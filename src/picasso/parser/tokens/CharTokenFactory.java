@@ -41,6 +41,7 @@ public class CharTokenFactory {
 		tokenList[CharConstants.STAR] = new MultToken();
 		tokenList[CharConstants.EXPONENT] = new MultToken();
 		tokenList[CharConstants.BANG] = new NegateToken();
+		tokenList[CharConstants.MOD]= new ModToken(); 
 
 		// TODO: What other tokens should be in here?
 		// TODO: Need to create the associated Token classes too.
