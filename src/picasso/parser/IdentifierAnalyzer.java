@@ -9,6 +9,7 @@ import picasso.parser.language.expressions.X;
 import picasso.parser.language.expressions.Y;
 import picasso.parser.tokens.IdentifierToken;
 import picasso.parser.tokens.Token;
+import picasso.parser.language.Assignment;
 
 /**
  * Handle an identifier token 
@@ -34,10 +35,14 @@ public class IdentifierAnalyzer implements SemanticAnalyzerInterface {
 		if (mapped != null) {
 			return mapped;
 		}
+		else {
+			return Assignment.getInstance().getExpression(id);
+		}
+		
 
 		// TODO : What should we do if we don't recognize the identifier?
 		// Is that an error? Or, could there a valid reason?
-		return null;
+		//return null;
 	}
 
 }
