@@ -3,7 +3,7 @@ package picasso.parser.tokens.functions;
 /**
  * Represents the ImageWrap function token
  * 
- * @author Jackson Jacobs
+ * @author Dan Nguyen 
  *
  */
 
