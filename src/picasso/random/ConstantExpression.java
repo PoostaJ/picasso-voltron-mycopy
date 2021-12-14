@@ -10,7 +10,7 @@ public class ConstantExpression {
 	double red = Math.random() * 2 - 1;
 	double green = Math.random() * 2 - 1;
 	double blue = Math.random() * 2 - 1;
-	String RGB = "[" + String.valueOf(red) + "," + String.valueOf(green) + "," + String.valueOf(blue) + "]";
+	String RGB = "[" + String.valueOf(red).substring(0, 5) + "," + String.valueOf(green).substring(0, 5) + "," + String.valueOf(blue).substring(0, 5) + "]";
 	
 	//Array of Constants
 	String[] constants = {"x" , "y", RGB};

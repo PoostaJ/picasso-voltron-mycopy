@@ -7,7 +7,7 @@ public class UnaryFunction {
 	Random Randint = new Random();
 	
 	
-	String[] UnaryFunctions = {"floor", "ceil", "sin", "cos", "tan", "atan", "RGB2YCRCR", "YCRCB2RGB"};
+	String[] UnaryFunctions = {"floor", "ceil", "sin", "cos", "tan", "atan", "RGB2YCRCR", "YCRCB2RGB", "log"};
 	
 	String unaryFunction = UnaryFunctions[Randint.nextInt(UnaryFunctions.length)]; 
 	

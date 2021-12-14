@@ -7,7 +7,7 @@ public class BinaryOperator {
 	Random Randint = new Random();
 	String operator;
 	
-	String[] BinaryOperators = {"+", "-", "*", "/", "^"};
+	String[] BinaryOperators = {"+", "-", "*", "^"};
 	String binaryOperator = BinaryOperators[Randint.nextInt(BinaryOperators.length)]; 
 	
 	RandomExpression expr1;
