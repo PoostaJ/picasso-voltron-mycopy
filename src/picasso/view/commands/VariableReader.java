@@ -4,27 +4,38 @@
 package picasso.view.commands;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import java.awt.BorderLayout;
 
 import picasso.model.Pixmap;
 import picasso.parser.language.Assignment;
 import picasso.util.Command;
-import picasso.util.NamedCommand;
 
 /**
  * @author Jackson Jacobs
  *
  */
 public class VariableReader implements Command<Pixmap> {
+	
+	private String message;
+	private JFrame myFrame;
+	private JTextArea myText;
 
-	public VariableReader() {
+	public VariableReader(JFrame frame) {
+		myText= new JTextArea();
+		myFrame= frame;
 	}
 	
 	
 	public void execute(Pixmap target) {
-		String message= Assignment.getInstance().readFromFile();
-		JFrame varBox= new JFrame();
-		JOptionPane.showMessageDialog(varBox, message);
-		varBox.setVisible(true);
+		message= Assignment.getInstance().readFromFile();
+		myText=new JTextArea(message);
+		System.out.println(message);
+		getLabel();
+	}
+	
+	public void getLabel() {
+		myFrame.getContentPane().add(myText, BorderLayout.WEST);
+		myFrame.pack();
 	}
 }

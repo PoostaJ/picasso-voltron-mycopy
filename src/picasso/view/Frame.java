@@ -31,23 +31,20 @@ public class Frame extends JFrame {
 		canvas.setSize(size);
     
 		myField= new JTextField(20);
+		VariableReader r= new VariableReader(this);
 		// add commands to test here
 		commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
 		commands.add(myField);
 		commands.add("Evaluater", new ThreadedCommand<Pixmap>(canvas, new Evaluater(myField)));
 		commands.add("Save", new Writer());	
-		commands.add(new NamedCommand<Pixmap>("Variables", new VariableReader()));
-		/**
-		 * Cant add a button that pulls up the current variable names. It has to be
-		 * <Pixmap>, but the command should not really operate on the pixmap,
-		 * so I am confused on what to do. VariableReader wont work, but I dont know
-		 * how else to read from a file and have the reading tied to a button press
-		 */
+		commands.add(new NamedCommand<Pixmap>("Refresh Variables", r));
+
 		
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
+		//getContentPane().add(r, BorderLayout.WEST);
 		pack();
 	}
 	
@@ -55,11 +52,5 @@ public class Frame extends JFrame {
 		JFrame errorBox= new JFrame();
 		JOptionPane.showMessageDialog(errorBox, errorText);
 		errorBox.setVisible(true);
-	}
-	
-	public static void drawVariableBox(String fileText) {
-		JFrame varBox= new JFrame();
-		JOptionPane.showMessageDialog(varBox, fileText);
-		varBox.setVisible(true);
 	}
 }
