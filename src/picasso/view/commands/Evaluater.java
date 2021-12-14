@@ -38,6 +38,7 @@ public class Evaluater implements Command<Pixmap> {
 		String input= box.getText();
 		ExpressionTreeNode expr;
 		
+		
 		//input= Assignment.getInstance().check(input);
 		
 		try {

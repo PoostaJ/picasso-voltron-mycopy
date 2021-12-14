@@ -71,7 +71,12 @@ public class Assignment {
 			myReader = new BufferedReader(new FileReader(myFile));
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
+		} catch (NullPointerException e2) {
+			e2.printStackTrace();
+			sb.append("No variables to display!");
+			return sb.toString();
 		}
+		
 		
 		String currentLine;
 		try {
@@ -86,7 +91,6 @@ public class Assignment {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		return null;
 	}	
 }

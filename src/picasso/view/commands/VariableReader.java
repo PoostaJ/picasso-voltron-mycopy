@@ -28,13 +28,13 @@ public class VariableReader implements Command<Pixmap> {
 	
 	
 	public void execute(Pixmap target) {
+		myFrame.getContentPane().remove(myText);
 		message= Assignment.getInstance().readFromFile();
 		myText=new JTextArea(message);
-		System.out.println(message);
-		getLabel();
+		getTextArea();
 	}
-	
-	public void getLabel() {
+
+	public void getTextArea() {
 		myFrame.getContentPane().add(myText, BorderLayout.WEST);
 		myFrame.pack();
 	}

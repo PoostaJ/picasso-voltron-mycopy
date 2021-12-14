@@ -44,7 +44,7 @@ public class Frame extends JFrame {
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
-		//getContentPane().add(r, BorderLayout.WEST);
+
 		pack();
 	}
 	
