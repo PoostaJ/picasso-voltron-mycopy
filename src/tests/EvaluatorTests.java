@@ -309,6 +309,7 @@ public class EvaluatorTests {
 		for (int i= -1; i<=1; i++) {
 			assertEquals(new RGBColor(Math.floor(i),Math.floor(i),Math.floor(i)), expr.evaluate(i, i));
 		}
+	}
 		
   @Test
 	public void testDivideEvaluation() {
