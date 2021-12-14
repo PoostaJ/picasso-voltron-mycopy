@@ -37,6 +37,7 @@ public class ExpressionTreeGenerator {
 	 */
 	public ExpressionTreeNode makeExpression(String infix) {
 		Stack<Token> postfix = infixToPostfix(infix);
+		//System.out.println(postfix);
 
 		if (postfix.isEmpty()) {
 			return null;
@@ -47,6 +48,7 @@ public class ExpressionTreeGenerator {
 
 		ExpressionTreeNode root = semAnalyzer.generateExpressionTree(postfix);
 
+		//System.out.println(postfix);
 		// Is this the best place to put this check?
 		if (!postfix.isEmpty()) {
 			throw new ParseException(
@@ -134,6 +136,8 @@ public class ExpressionTreeGenerator {
 					throw new ParseException("Parentheses were mismatched.");
 				}
 
+			} else if (token instanceof EqualsToken) {
+				operators.push(token);
 			} else if (token instanceof LeftParenToken) {
 				operators.push(token);
 			} else if (token instanceof RightParenToken) {
@@ -162,7 +166,7 @@ public class ExpressionTreeGenerator {
 			} else {
 				System.out.println("ERROR: No match: " + token);
 			}
-			// System.out.println("Postfix: " + postfixResult);
+			//System.out.println("Postfix: " + postfixResult);
 		}
 
 		while (!operators.isEmpty()) {
@@ -179,7 +183,7 @@ public class ExpressionTreeGenerator {
 			postfixResult.push(operators.pop());
 		}
 
-		// System.out.println(postfixResult);
+		//System.out.println(postfixResult);
 		return postfixResult;
 	}
 

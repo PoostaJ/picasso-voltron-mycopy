@@ -139,6 +139,12 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Tan(new X()), e);
 				
 	}
+	
+	@Test
+	public void assignmentFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("a=cos(y)");
+		assertEquals(new Cos(new Y()), e);
+	}
 
 
 	@Test
