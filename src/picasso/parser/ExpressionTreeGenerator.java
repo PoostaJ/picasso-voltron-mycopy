@@ -24,6 +24,7 @@ public class ExpressionTreeGenerator {
 	private static final int GROUPING = 1; // parentheses
 	private static final int ADD_OR_SUBTRACT = 2;
 	private static final int MULTIPLY_OR_DIVIDE = 3;
+	private static final int EXPONENT = 3;
 
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
@@ -84,6 +85,7 @@ public class ExpressionTreeGenerator {
 
 		while (iter.hasNext()) {
 			Token token = iter.next();
+
 			if (token instanceof NumberToken) {
 				postfixResult.push(token);
 			} else if (token instanceof ColorToken) {
@@ -92,7 +94,10 @@ public class ExpressionTreeGenerator {
 				postfixResult.push(token);
 			} else if (token instanceof FunctionToken) {
 				operators.push(token);
+			} else if (token instanceof StringToken) {
+				postfixResult.push(token);
 			} else if (token instanceof OperationInterface) {
+			
 
 				/*
 				 * while there is an operator, o2, at the top of the stack (this
@@ -196,6 +201,11 @@ public class ExpressionTreeGenerator {
 
 		if (token instanceof PlusToken)
 			return ADD_OR_SUBTRACT;
+
+		else if (token instanceof MinusToken) {
+			return ADD_OR_SUBTRACT;
+		}
+
 		else
 			return CONSTANT;
 	}

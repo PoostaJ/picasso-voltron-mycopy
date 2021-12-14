@@ -115,6 +115,28 @@ public class ParsedExpressionTreeTests {
 	public void cosFunctionTests() {
 		ExpressionTreeNode e= parser.makeExpression("cos(x)");
 		assertEquals(new Cos(new X()), e);
+
+	}
+	
+	@Test
+	public void MinusExpressionTests() {
+		ExpressionTreeNode e = parser.makeExpression("x-y");
+		assertEquals(new Minus(new X(), new Y()), e);
+		
+		e=parser.makeExpression("1 - 1");
+		assertEquals(new Minus(new Constant(1), new Constant(1)), e);
+	}
+	
+	@Test
+	public void RGB2YCRCRFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("RGB2YCRCR(y)");
+		assertEquals(new RGB2YCRCR(new Y()), e);
+  }
+  
+  @Test
+	public void tanFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("tan(x)");
+		assertEquals(new Tan(new X()), e);
 				
 	}
 	
@@ -122,6 +144,35 @@ public class ParsedExpressionTreeTests {
 	public void assignmentFunctionTests() {
 		ExpressionTreeNode e= parser.makeExpression("a=cos(y)");
 		assertEquals(new Cos(new Y()), e);
+	}
+
+
+	@Test
+	public void expFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("exp(x)");
+		assertEquals(new Exp(new X()), e);
+				
+	}
+	
+	@Test
+	public void YCRCB2RGBFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("YCRCB2RGB(x)");
+		assertEquals(new YCRCB2RGB(new X()), e);
+				
+	}
+	
+	@Test
+	public void multFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("x*y");
+		assertEquals(new Mult(new X(), new Y()), e);
+				
+	}
+  
+  @Test
+	public void atanFunctionTests() {
+		ExpressionTreeNode e= parser.makeExpression("atan(x)");
+		assertEquals(new Atan(new X()), e);
+
 	}
 
 }
