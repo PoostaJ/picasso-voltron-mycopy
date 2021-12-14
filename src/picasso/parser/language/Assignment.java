@@ -81,7 +81,6 @@ public class Assignment {
 				sb.append("\n");
 			}
 			myReader.close();
-			System.out.println(sb.toString());
 			return sb.toString();
 			
 		} catch (IOException e) {
