@@ -35,7 +35,8 @@ public class Evaluater implements Command<Pixmap> {
 	public void execute(Pixmap target) {
 		String input= box.getText();
 		ExpressionTreeNode expr;
-		input= Assignment.getInstance().check(input);
+		
+		//input= Assignment.getInstance().check(input);
 		
 		try {
 			expr = createExpression(input);
@@ -44,7 +45,10 @@ public class Evaluater implements Command<Pixmap> {
 			Frame.drawException(e.getMessage());
 			return;
 		}
-
+		catch (IllegalArgumentException e) {
+			Frame.drawException(e.getMessage());
+			return;
+		}
 
 		// evaluate it for each pixel
 		Dimension size = target.getSize();

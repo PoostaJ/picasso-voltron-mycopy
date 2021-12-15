@@ -69,15 +69,17 @@ public class Tokenizer {
 		Token result = nextToken();
 
 		while (true) {
-
+			
+			
 			if (EOFToken.getInstance().equals(result)) {
 				break;
 			}
 			tokens.add(result);
 			result = nextToken();
 		}
+		
 
-		// System.out.println("Tokens: " + tokens);
+		//System.out.println("Tokens: " + tokens);
 		return tokens;
 	}
 

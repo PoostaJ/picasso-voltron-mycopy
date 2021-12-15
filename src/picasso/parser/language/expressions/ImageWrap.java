@@ -9,7 +9,7 @@ import picasso.parser.language.expressions.RGBColor;
 /**
  * Represents the imageWrap function in the Picasso language.
  * 
- * @author 
+ * @author Dan Nguyen
  * 
  */
 public class ImageWrap extends MultipleArgumentFunction {
@@ -17,15 +17,15 @@ public class ImageWrap extends MultipleArgumentFunction {
 	Pixmap img;
 	
 	/**
-	 * Implement the + operation on the left and right expressions
+	 * Implement the imageWrap function on the left and right expressions
 	 * 
 	 * @param left      left expression
 	 * @param right     right expression
 	 */
 	
-	public ImageWrap(ExpressionTreeNode left, ExpressionTreeNode right) {
+	public ImageWrap(String filename, ExpressionTreeNode left, ExpressionTreeNode right) {
 		super(left, right);
-		img= new Pixmap("images/vortex.jpg");
+		img= new Pixmap("images/" + filename);
 	}
 
 	/**
@@ -36,29 +36,23 @@ public class ImageWrap extends MultipleArgumentFunction {
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
+		RGBColor leftColor=expr1.evaluate(x, y);
+		RGBColor rightColor=expr2.evaluate(x, y);
+		double evalY= wrap(leftColor.getRed());
+		double evalX= wrap(rightColor.getRed());
 
-		
-		//int evalY = img.getSize().height;
-		//int evalX = img.getSize().width;
-		x = 2*x;
-		double evalY= wrap(y);
-		double evalX= wrap(x);
-		System.out.println("Expected: -.8  Actual: " + evalX);
-		System.out.println("Expected: 79" + " Actual: " + widthToInt(evalX));
 		RGBColor newRGB= new RGBColor(img.getColor(widthToInt(evalX), heightToInt(evalY)));
-		//System.out.println("Expected: "+ x);
-		//System.out.println("Actual: "+ evalX);
 		return newRGB;
 	}
 
 	public double wrap(double value) {
 
 		if (value > RGBColor.COLOR_MAX) {
-			return (RGBColor.COLOR_MIN + ((value -1) % 2.0));
+			return (RGBColor.COLOR_MIN + ((value - RGBColor.COLOR_MAX) % RGBColor.RANGE));
 		}
 		
 		if (value < RGBColor.COLOR_MIN) {
-			return (RGBColor.COLOR_MAX - (Math.abs(value-1) % 2.0)) ;
+			return (RGBColor.COLOR_MAX - (Math.abs(value- RGBColor.COLOR_MAX) % RGBColor.RANGE)) ;
 		}
 		
 		else {
@@ -68,13 +62,11 @@ public class ImageWrap extends MultipleArgumentFunction {
 
 	
 	public int heightToInt(double value) {
-		double range = 2;
-		return (int) ((value+1) /2 * img.getSize().height);
+		return (int) ((value - RGBColor.COLOR_MIN) /RGBColor.RANGE * img.getSize().height);
 	}
 	
 	public int widthToInt(double value) {
-		double range = 2;
-		return (int) ((value+1) /2 * img.getSize().width);
+		return (int) ((value - RGBColor.COLOR_MIN) /RGBColor.RANGE * img.getSize().width);
 	}
 	
 
