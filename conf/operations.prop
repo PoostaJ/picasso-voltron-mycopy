@@ -5,3 +5,6 @@
 /=Divide
 *=Mult
 ^=Exponentiate
+\!=Negate
+%=Mod
+

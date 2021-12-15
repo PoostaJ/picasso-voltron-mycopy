@@ -57,10 +57,6 @@ public class Minus extends BinaryFunction {
 			return true;
 		}
 		
-		else if (left.equals(f.right) && right.equals(f.left)) {
-			return true;
-		}
-		
 		else {
 			return false;
 		}

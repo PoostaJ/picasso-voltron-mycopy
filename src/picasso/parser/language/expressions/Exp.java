@@ -14,7 +14,7 @@ public class Exp extends UnaryFunction {
 	/**
 	 * Create an exponent expression that takes as a parameter the given expression
 	 * 
-	 * @param param the expression to floor
+	 * @param param the expression to exp
 	 */
 	public Exp(ExpressionTreeNode param) {
 		super(param);
