@@ -168,5 +168,18 @@ public class ParsedExpressionTreeTests {
 		assertEquals(new Atan(new X()), e);
 
 	}
+  
+  @Test
+  	public void modFunctionTests() {
+	  ExpressionTreeNode e = parser.makeExpression("x%y");
+	  assertEquals(new Mod(new X(), new Y()), e);
+  }
+  
+  @Test
+  	public void negateFunctionTests() {
+	  ExpressionTreeNode e = parser.makeExpression("!x");
+	  assertEquals(new Negate(new X()), e);
+  }
+  
 
 }

@@ -9,6 +9,7 @@ import picasso.parser.language.ExpressionTreeNode;
  * Represents the % operation in the Picasso language.
  * 
  * @author Patrick Stoffel
+ * @author Dan Nguyen
  *
  */
 public class Mod extends BinaryFunction {
@@ -43,10 +44,6 @@ public class Mod extends BinaryFunction {
 			return true;
 		}
 		
-		if (left.equals(f.right) && right.equals(f.left)) {
-			return true;
-		}
-		
 		else {
 			return false;
 		}
@@ -61,13 +58,45 @@ public class Mod extends BinaryFunction {
 	 */
 	@Override
 	public RGBColor evaluate(double x, double y) {
+		
+		int redIndex = 0;
+		int greenIndex = 1;
+		int blueIndex = 2;
+		int NumberOfColors = 3;
+		
 		RGBColor leftColor = left.evaluate(x, y);
 		RGBColor rightColor = right.evaluate(x, y);
-		double red = leftColor.getRed() % rightColor.getRed();
-		double green = leftColor.getGreen() % rightColor.getGreen();
-		double blue = leftColor.getBlue() % rightColor.getBlue();
 		
+		double rightRed = rightColor.getRed();
+		double rightGreen = rightColor.getGreen();
+		double rightBlue = rightColor.getBlue();
+		
+		double leftRed = leftColor.getRed();
+		double leftGreen = leftColor.getGreen();
+		double leftBlue = leftColor.getBlue();
+		
+
+		double[] colors = new double[NumberOfColors];
+		double[] rightColors = {rightRed, rightGreen, rightBlue};
+		double[] leftColors = {leftRed, leftGreen, leftBlue};
+		
+		int i;
+		for (i = 0; i < colors.length; i++) {
+			if (rightColors[i] == 0) {
+				colors[i] = 0;
+			}
+			
+			else {
+				colors[i] = leftColors[i] % rightColors[i];
+			}
+		}
+		
+		double red = colors[redIndex];
+		double green = colors[greenIndex];
+		double blue = colors[blueIndex];
+
 		return new RGBColor(red, green, blue);
+		
 	}
 
 }

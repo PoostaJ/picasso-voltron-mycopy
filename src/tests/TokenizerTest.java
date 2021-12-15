@@ -201,9 +201,26 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
+  
+  @Test
+  	public void testTokenizeModFunctionExpression() {
+	  String expression = "x%y";
+	  tokens = tokenizer.parseTokens(expression);
+	  assertEquals(new IdentifierToken("x"), tokens.get(0));
+	  assertEquals(new ModToken(), tokens.get(1));
+	  assertEquals(new IdentifierToken("y"), tokens.get(2));
+  }
+  
+  @Test
+  	public void testTokenizeNegateFunction() {
+	  String expression = "!x";
+	  tokens = tokenizer.parseTokens(expression);
+	  assertEquals(new NegateToken(), tokens.get(0));
+	  assertEquals(new IdentifierToken("x"), tokens.get(1));
+  }
 
 
-	@Test
+  @Test
 	public void testTokenizeCombinedFunctionExpression() {
 		String expression = "perlinColor(floor(x), y)";
 		List<Token> tokens = tokenizer.parseTokens(expression);
