@@ -30,7 +30,9 @@ Dario Fumarola
 
 1) Generate Expressions Randomly: There is a "Random!" button on the top part of the Frame which, when clicked, will create a random function in the text box also in the top part of the frame. From there, all the user needs to do is hit evaluate and the evaluated random function will appear in the frame. <br />
 
-2) Display Current Defined Variable Names and Their Values: First the user will type a variable and assign it a function in the text box and click evaluate. Then click refresh variables and a side window with both the variable and the assigned function will appear.
+2) Display Current Defined Variable Names and Their Values: First the user will type a variable and assign it a function in the text box and click evaluate. Then click refresh variables and a side window with both the variable and the assigned function will appear. <br />
+
+3) Allow User to View Multiple Images at Once: There is a button on the bottom part of the Frame which, when clicked, will create another window that will have its own functionality to display a different image than the original window.
 
 
 
