@@ -20,7 +20,7 @@ public class BinaryExpressionGenerator {
 	
 	public String execute() {
 		
-		return "(" + expr1.execute() + ")"+ binaryOperator + "(" + expr1.execute() + ")";
+		return "(" + expr1.executeS() + ")"+ binaryOperator + "(" + expr1.executeS() + ")";
 		
 	}
 	

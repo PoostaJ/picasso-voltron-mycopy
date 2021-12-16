@@ -22,7 +22,7 @@ public class UnaryExpressionGenerator {
 	
 	public String execute() {	
 		
-		return unaryFunction + "(" +   expr1.execute()  + ")";
+		return unaryFunction + "(" +   expr1.executeS()  + ")";
 		
 	}
 	
