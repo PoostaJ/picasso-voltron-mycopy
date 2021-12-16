@@ -2,6 +2,7 @@ package picasso.view.commands;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.IOException;
 
 import javax.swing.JTextField;
 
@@ -11,6 +12,7 @@ import picasso.parser.language.ExpressionTreeNode;
 import picasso.util.Command;
 import picasso.view.Frame;
 import picasso.view.ButtonPanel;
+import picasso.parser.language.Assignment;
 import picasso.parser.language.CharConstants;
 import picasso.parser.ParseException;
 
@@ -36,6 +38,7 @@ public class Evaluater implements Command<Pixmap> {
 		String input= box.getText();
 		ExpressionTreeNode expr;
 		
+		
 		//input= Assignment.getInstance().check(input);
 		
 		try {
@@ -49,7 +52,8 @@ public class Evaluater implements Command<Pixmap> {
 			Frame.drawException(e.getMessage());
 			return;
 		}
-
+		Assignment.getInstance().writeToFile(input);
+		
 		// evaluate it for each pixel
 		Dimension size = target.getSize();
 		for (int imageY = 0; imageY < size.height; imageY++) {
