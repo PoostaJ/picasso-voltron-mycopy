@@ -257,19 +257,6 @@ public class TokenizerTest {
   	}
 
 
-  @Test
-	public void testTokenizeCombinedFunctionExpression() {
-		String expression = "perlinColor(floor(x), y)";
-		List<Token> tokens = tokenizer.parseTokens(expression);
-		// TODO: Check the tokens...
-
-		expression = "sin(perlinColor(x, y))";
-		tokens = tokenizer.parseTokens(expression);
-		
-		expression = "perlinColor(x + y)";
-		tokens = tokenizer.parseTokens(expression);
-		// TODO: Check the tokens...
-	}
 
 	@Test
 	public void testTokenizeCombinedFunctionExpression() {
