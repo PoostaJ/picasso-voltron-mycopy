@@ -204,17 +204,30 @@ public class ExpressionTreeGenerator {
 		// TODO: DISCUSS: Is it better to have a method in the OperatorToken
 		// class that gives the order of operation?
 
-		if (token instanceof PlusToken)
-			return ADD_OR_SUBTRACT;
-
-		else if (token instanceof MinusToken) {
+		if (token instanceof PlusToken || token instanceof MinusToken) {
 			return ADD_OR_SUBTRACT;
 		}
-
-		else
+		else if (token instanceof DivideToken || token instanceof MultToken) {
+			return MULTIPLY_OR_DIVIDE;
+		}
+		
+		else if (token instanceof ExponentiateToken) {
+			return EXPONENT;
+		}
+		
+		else if (token instanceof LeftParenToken) {
+			return GROUPING;
+		}
+		
+		else {
 			return CONSTANT;
+		}
 	}
 	
+	/**
+	 * 
+	 * @return whether equals was found during parsing
+	 */
 	public boolean equalsIncluded() {
 		return equalsIncluded;
 	}
