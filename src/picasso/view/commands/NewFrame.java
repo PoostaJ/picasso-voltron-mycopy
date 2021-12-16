@@ -10,8 +10,6 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class NewFrame extends JFrame implements Command<Pixmap> {
 
-	public NewFrame() {
-	}
 	public void execute(Pixmap target) {
 		Frame NewFrame= new Frame(Main.SIZE);
 		NewFrame.setTitle("Picasso- Voltron");
