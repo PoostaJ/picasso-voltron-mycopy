@@ -62,11 +62,11 @@ public class ImageWrap extends MultipleArgumentFunction {
 
 	
 	public int heightToInt(double value) {
-		return (int) (((value - RGBColor.COLOR_MIN) /RGBColor.RANGE * img.getSize().height) -1 );
+		return (int) ((value - RGBColor.COLOR_MIN) /RGBColor.RANGE * (img.getSize().height-1));
 	}
 	
 	public int widthToInt(double value) {
-		return (int) (((value - RGBColor.COLOR_MIN) /RGBColor.RANGE * img.getSize().width) -1 );
+		return (int) ((value - RGBColor.COLOR_MIN) /RGBColor.RANGE * (img.getSize().width-1));
 	}
 	
 
