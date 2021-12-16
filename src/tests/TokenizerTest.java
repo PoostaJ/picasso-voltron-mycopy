@@ -244,16 +244,30 @@ public class TokenizerTest {
   	}
 
 
-  @Test
+	@Test
+  	public void testTokenizePerlinBWFunction() {
+	  String expression = "perlinBW(x, y)";
+	  tokens = tokenizer.parseTokens(expression);
+	  assertEquals(new PerlinBWToken(), tokens.get(0));
+	  assertEquals(new LeftParenToken(), tokens.get(1));
+	  assertEquals(new IdentifierToken("x"), tokens.get(2));
+	  assertEquals(new CommaToken(), tokens.get(3));
+	  assertEquals(new IdentifierToken("y"), tokens.get(4));
+	  assertEquals(new RightParenToken(), tokens.get(5));
+  	}
+
+
+
+	@Test
 	public void testTokenizeCombinedFunctionExpression() {
-		String expression = "perlinColor(floor(x), y)";
+		String expression = "perlinBW(floor(x), y)";
 		List<Token> tokens = tokenizer.parseTokens(expression);
 		// TODO: Check the tokens...
 
-		expression = "sin(perlinColor(x, y))";
+		expression = "sin(perlinBW(x, y))";
 		tokens = tokenizer.parseTokens(expression);
 		
-		expression = "perlinColor(x + y)";
+		expression = "perlinBW(x + y)";
 		tokens = tokenizer.parseTokens(expression);
 		// TODO: Check the tokens...
 	}

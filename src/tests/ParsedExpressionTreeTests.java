@@ -192,6 +192,12 @@ public class ParsedExpressionTreeTests {
 	  ExpressionTreeNode e = parser.makeExpression("perlinColor(x, y)");
 	  assertEquals(new PerlinColor(new X(), new Y()), e);
   }
+
+  @Test
+  public void perlinBWFunctionTests() {
+  ExpressionTreeNode e = parser.makeExpression("perlinBW(x, y)");
+  assertEquals(new PerlinBW(new X(), new Y()), e);
+}
   
 
 }

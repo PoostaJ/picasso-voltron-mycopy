@@ -746,5 +746,15 @@ public class EvaluatorTests {
 		}
 	}
 
+	@Test
+	public void PerlinBWEvaluation() {
+		String s = "perlinBW(x, y)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(ImprovedNoise.noise(i + i, i + i, i + i), ImprovedNoise.noise(i + i, i + i, i + i), ImprovedNoise.noise(i + i, i + i, i + i)), expr.evaluate(i, i));
+		}
+	}	
+
 }
 	
