@@ -1,10 +1,6 @@
 package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
-import java.awt.Color;
 import picasso.model.Pixmap;
-import java.awt.Dimension;
-import picasso.view.commands.Evaluater;
-import picasso.parser.language.expressions.RGBColor;
 
 /**
  * Represents the imageWrap function in the Picasso language.

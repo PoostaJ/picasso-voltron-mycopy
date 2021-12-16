@@ -2,8 +2,6 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
-import picasso.parser.language.expressions.RGBColor;
-
 /**
  * Represents the clamp function in the Picasso language.
  * 

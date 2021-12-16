@@ -2,7 +2,6 @@ package picasso.view.commands;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.io.IOException;
 
 import javax.swing.JTextField;
 
@@ -11,9 +10,7 @@ import picasso.parser.ExpressionTreeGenerator;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.util.Command;
 import picasso.view.Frame;
-import picasso.view.ButtonPanel;
 import picasso.parser.language.Assignment;
-import picasso.parser.language.CharConstants;
 import picasso.parser.ParseException;
 
 

@@ -5,16 +5,12 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Stack;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import picasso.parser.ExpressionTreeGenerator;
-import picasso.parser.SemanticAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
-import picasso.parser.tokens.Token;
 import picasso.model.ImprovedNoise;
 
 /**

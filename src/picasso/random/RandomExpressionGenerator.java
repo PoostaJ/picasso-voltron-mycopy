@@ -3,7 +3,6 @@ package picasso.random;
 import picasso.model.Pixmap;
 
 import picasso.util.Command;
-import picasso.view.Frame;
 import javax.swing.JTextField;
 
 /**

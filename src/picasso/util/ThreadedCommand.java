@@ -1,8 +1,6 @@
 package picasso.util;
 
 import javax.swing.JComponent;
-import picasso.view.Frame;
-
 
 /**
  * Execute a long running command in a separate thread and display the results

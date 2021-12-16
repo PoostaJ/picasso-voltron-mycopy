@@ -8,7 +8,6 @@ import java.util.Stack;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.PerlinColor;
 import picasso.parser.tokens.Token;
-import picasso.parser.tokens.chars.StringToken;
 
 /**
  * Handles parsing for the PerlinColor function
