@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import javax.swing.*;
 
 import picasso.model.Pixmap;
+import picasso.random.RandomExpressionGenerator;
+import picasso.util.NamedCommand;
 import picasso.util.ThreadedCommand;
 import picasso.view.commands.*;
 import java.awt.event.*;
@@ -28,14 +30,17 @@ public class Frame extends JFrame {
 		Canvas canvas = new Canvas(this);
 		canvas.setSize(size);
     
+		
 		myField= new JTextField(20);
+		RandomExpressionGenerator ranExpr= new RandomExpressionGenerator(0.1,0.3, myField);
 		// add commands to test here
 		commands = new ButtonPanel(canvas);
 		commands.add("Open", new Reader());
 		commands.add(myField);
 		commands.add("Evaluater", new ThreadedCommand<Pixmap>(canvas, new Evaluater(myField)));
 		commands.add("Save", new Writer());		
-		
+		commands.add(new NamedCommand<Pixmap>("Random!", ranExpr));
+
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
