@@ -17,6 +17,7 @@ import java.awt.event.*;
  * Main container for the Picasso application
  *
  * @author Robert Duvall (rcd@cs.duke.edu)
+ * @author Jackson Jacobs
  * 
  */
 @SuppressWarnings("serial")
@@ -36,16 +37,19 @@ public class Frame extends JFrame {
 		myField= new JTextField(20);
 		VariableReader r= new VariableReader(this);
 		RandomExpressionGenerator ranExpr= new RandomExpressionGenerator(0.1,0.3, myField);
+		NewFrame newFrame= new NewFrame();
     
 		// add commands to test here
 		commands = new ButtonPanel(canvas);
 		commandsBottom= new ButtonPanel(canvas);
+		
 		commandsBottom.add("Open", new Reader());
 		commands.add(myField);
 		commands.add("Evaluater", new ThreadedCommand<Pixmap>(canvas, new Evaluater(myField)));
 		commandsBottom.add("Save", new Writer());	
 		commands.add(new NamedCommand<Pixmap>("Refresh Variables", r));		
 		commands.add(new NamedCommand<Pixmap>("Random!", ranExpr));
+		commandsBottom.add(new NamedCommand<Pixmap>("New Window", newFrame));
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
@@ -59,4 +63,6 @@ public class Frame extends JFrame {
 		JOptionPane.showMessageDialog(errorBox, errorText);
 		errorBox.setVisible(true);
 	}
+	
+	
 }
