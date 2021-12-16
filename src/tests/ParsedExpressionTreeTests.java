@@ -15,6 +15,10 @@ import picasso.parser.language.expressions.*;
  * compiler errors until some code is created.
  * 
  * @author Sara Sprenkle
+ * @author Jackson Jacobs
+ * @author Dario Fumarola
+ * @author Dan Nguyen
+ * @author Patrick Stoffel
  * 
  */
 public class ParsedExpressionTreeTests {
