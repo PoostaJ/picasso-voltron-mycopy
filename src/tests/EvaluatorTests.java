@@ -17,8 +17,13 @@ import picasso.model.ImprovedNoise;
  * Tests of the evaluation of x
  * 
  * @author Sara Sprenkle
+ * @author Jackson Jacobs
+ * @author Dan Nquyen
+ * @author Patrick Stofell
+ * @author Dario Fumarola
  * 
  */
+
 public class EvaluatorTests {
 
 	private ExpressionTreeGenerator parser;
@@ -308,7 +313,7 @@ public class EvaluatorTests {
 		}
 	}
 		
-  @Test
+	@Test
 	public void testDivideEvaluation() {
 		String s0= "1/0";
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
@@ -517,27 +522,27 @@ public class EvaluatorTests {
 		
 	}
 	
-	  @Test
-		public void testExpEvaluation() {
-			String s= "exp(1)";
-			ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
-			ExpressionTreeNode expr= expTreeGen.makeExpression(s);
-			for (int i= -1; i<=1; i++) {
-				assertEquals(new RGBColor(Math.exp(1), Math.exp(1), Math.exp(1)), expr.evaluate(i, i));
-			}
-			
-			String s2= "exp(x)";
-			expr=expTreeGen.makeExpression(s2);
-			for (int i= -1; i<=1; i++) {
-				assertEquals(new RGBColor(Math.exp(i), Math.exp(i), Math.exp(i)), expr.evaluate(i, i));
-			}
-			
-			String s3= "exp(x+y)";
-			expr=expTreeGen.makeExpression(s3);
-			for (int i= -1; i<=1; i++) {
-				assertEquals(new RGBColor(Math.exp(i+i), Math.exp(i+i), Math.exp(i+i)), expr.evaluate(i, i));
-			}
+	@Test
+	public void testExpEvaluation() {
+		String s= "exp(1)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.exp(1), Math.exp(1), Math.exp(1)), expr.evaluate(i, i));
 		}
+			
+		String s2= "exp(x)";
+		expr=expTreeGen.makeExpression(s2);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.exp(i), Math.exp(i), Math.exp(i)), expr.evaluate(i, i));
+		}
+			
+		String s3= "exp(x+y)";
+		expr=expTreeGen.makeExpression(s3);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(Math.exp(i+i), Math.exp(i+i), Math.exp(i+i)), expr.evaluate(i, i));
+		}
+	}
 	  
 		@Test
 		public void testMultEvaluation() {
@@ -724,7 +729,7 @@ public class EvaluatorTests {
 	
 	@Test
 	public void testPerlinColorEvaluation() {
-		String s = "perlinColor(x, y)";
+		String s = "(x, y)";
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
 		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
 		for (int i= -1; i<=1; i++) {
@@ -740,7 +745,6 @@ public class EvaluatorTests {
 		for (int i= -1; i<=1; i++) {
 			assertEquals(new RGBColor(ImprovedNoise.noise(i + i, i + i, i + i), ImprovedNoise.noise(i + i, i + i, i + i), ImprovedNoise.noise(i + i, i + i, i + i)), expr.evaluate(i, i));
 		}
-	}	
-
+	}
 }
 	

@@ -15,6 +15,16 @@ import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
 import picasso.parser.tokens.operations.*;
 
+/**
+ * Tests the tokenization.
+ * 
+ * @author Jackson Jacobs
+ * @author Dan Nquyen
+ * @author Dario Fumarola
+ * @author Patrick Stoffel
+ *
+ */
+
 public class TokenizerTest {
 
 	Tokenizer tokenizer;
