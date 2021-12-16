@@ -23,6 +23,7 @@ import java.awt.event.*;
 public class Frame extends JFrame {
 	protected JTextField myField;
 	private ButtonPanel commands;
+	private ButtonPanel commandsBottom;
 
 	public Frame(Dimension size) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,16 +39,17 @@ public class Frame extends JFrame {
     
 		// add commands to test here
 		commands = new ButtonPanel(canvas);
-		commands.add("Open", new Reader());
+		commandsBottom= new ButtonPanel(canvas);
+		commandsBottom.add("Open", new Reader());
 		commands.add(myField);
 		commands.add("Evaluater", new ThreadedCommand<Pixmap>(canvas, new Evaluater(myField)));
-		commands.add("Save", new Writer());	
-		commands.add(new NamedCommand<Pixmap>("Refresh Variables", r));
-		commands.add("Save", new Writer());		
+		commandsBottom.add("Save", new Writer());	
+		commands.add(new NamedCommand<Pixmap>("Refresh Variables", r));		
 		commands.add(new NamedCommand<Pixmap>("Random!", ranExpr));
 		// add our container to Frame and show it
 		getContentPane().add(canvas, BorderLayout.CENTER);
 		getContentPane().add(commands, BorderLayout.NORTH);
+		getContentPane().add(commandsBottom, BorderLayout.SOUTH);
 
 		pack();
 	}
