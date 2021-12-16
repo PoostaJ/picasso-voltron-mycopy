@@ -1,7 +1,12 @@
 package picasso.parser.language;
 
 import java.util.*;
-import picasso.parser.language.ExpressionTreeNode;
+import java.io.FileWriter; 
+import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 /**
  * Creates the hashmap to be used by Picasso 
@@ -14,6 +19,8 @@ public class Assignment {
 	
 	private static Assignment ourInstance;
 	private static HashMap<String, ExpressionTreeNode> ourMap;
+	private static File myFile;
+	private String lastString;
 	
 	/**
 	 * Make sure that there is only one Assignment hashmap for the application.
@@ -46,5 +53,46 @@ public class Assignment {
 		return ourMap.get(key);
 	}
 	
-
+	public void writeToFile(String s) {
+		myFile= new File("varExpressions.txt");
+		
+		try {
+			FileWriter myWriter = new FileWriter(myFile, true);
+			myWriter.write(s+"\n");
+			myWriter.close();
+			lastString=s;
+			myFile.deleteOnExit();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String readFromFile() {
+		StringBuilder sb= new StringBuilder();
+		BufferedReader myReader = null;
+		try {
+			myReader = new BufferedReader(new FileReader(myFile));
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (NullPointerException e2) {
+			e2.printStackTrace();
+			sb.append("No variables to display!");
+			return sb.toString();
+		}
+		
+		
+		String currentLine;
+		try {
+			while ((currentLine = myReader.readLine()) != null) {
+				sb.append(currentLine);
+				sb.append("\n");
+			}
+			myReader.close();
+			return sb.toString();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}	
 }

@@ -9,6 +9,7 @@ import picasso.parser.tokens.*;
 import picasso.parser.tokens.chars.*;
 import picasso.parser.tokens.functions.*;
 import picasso.parser.tokens.operations.*;
+import picasso.parser.language.Assignment;
 
 /**
  * Parses a string into an expression tree based on rules for arithmetic.
@@ -37,7 +38,6 @@ public class ExpressionTreeGenerator {
 	 */
 	public ExpressionTreeNode makeExpression(String infix) {
 		Stack<Token> postfix = infixToPostfix(infix);
-		//System.out.println(postfix);
 
 		if (postfix.isEmpty()) {
 			return null;

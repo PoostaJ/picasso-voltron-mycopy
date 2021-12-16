@@ -230,6 +230,18 @@ public class TokenizerTest {
 	  assertEquals(new NegateToken(), tokens.get(0));
 	  assertEquals(new IdentifierToken("x"), tokens.get(1));
   }
+  
+  @Test
+  	public void testTokenizePerlinColorFunction() {
+	  String expression = "perlinColor(x, y)";
+	  tokens = tokenizer.parseTokens(expression);
+	  assertEquals(new PerlinColorToken(), tokens.get(0));
+	  assertEquals(new LeftParenToken(), tokens.get(1));
+	  assertEquals(new IdentifierToken("x"), tokens.get(2));
+	  assertEquals(new CommaToken(), tokens.get(3));
+	  assertEquals(new IdentifierToken("y"), tokens.get(4));
+	  assertEquals(new RightParenToken(), tokens.get(5));
+  	}
 
 
   @Test
