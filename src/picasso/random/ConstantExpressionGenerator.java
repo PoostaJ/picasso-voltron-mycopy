@@ -1,7 +1,12 @@
 package picasso.random;
 import java.util.Random;
 
-
+/**
+ * Generate a Random Constant Expression
+ * 
+ * @author Dan Nguyen 
+ * 
+ */
 public class ConstantExpressionGenerator {
 	
 	Random Randint = new Random();

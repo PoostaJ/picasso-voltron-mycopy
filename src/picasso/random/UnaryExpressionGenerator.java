@@ -2,6 +2,13 @@ package picasso.random;
 
 import java.util.Random;
 
+/**
+ * Generate a Random Unary Expression
+ * 
+ * @author Dan Nguyen 
+ * 
+ */
+
 public class UnaryExpressionGenerator {
 	
 	Random Randint = new Random();

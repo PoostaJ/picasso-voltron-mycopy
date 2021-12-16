@@ -2,6 +2,13 @@ package picasso.random;
 
 import java.util.Random;
 
+/**
+ * Generate a Random Binary Expression
+ * 
+ * @author Dan Nguyen 
+ * 
+ */
+
 public class BinaryExpressionGenerator {
 	
 	Random Randint = new Random();

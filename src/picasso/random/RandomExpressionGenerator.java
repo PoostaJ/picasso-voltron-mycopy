@@ -1,9 +1,17 @@
 package picasso.random;
 
 import picasso.model.Pixmap;
+
 import picasso.util.Command;
 import picasso.view.Frame;
 import javax.swing.JTextField;
+
+/**
+ * Generate a Random Mathematical Expression
+ * 
+ * @author Dan Nguyen 
+ * 
+ */
 
 public class RandomExpressionGenerator implements Command<Pixmap> {
 	
