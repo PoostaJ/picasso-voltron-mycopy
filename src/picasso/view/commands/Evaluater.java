@@ -27,6 +27,7 @@ public class Evaluater implements Command<Pixmap> {
 	public static final double DOMAIN_MIN = -1;
 	public static final double DOMAIN_MAX = 1;
 	private JTextField box;
+	ExpressionTreeGenerator expTreeGen;
 	
 	public Evaluater(JTextField box) {
 		this.box= box;
@@ -52,7 +53,9 @@ public class Evaluater implements Command<Pixmap> {
 			Frame.drawException(e.getMessage());
 			return;
 		}
-		Assignment.getInstance().writeToFile(input);
+		if (expTreeGen.equalsIncluded()) {
+			Assignment.getInstance().writeToFile(input);
+		}
 		
 		// evaluate it for each pixel
 		Dimension size = target.getSize();
@@ -86,7 +89,7 @@ public class Evaluater implements Command<Pixmap> {
 		//String test = "floor(y)";
 		//String test = "x + y";
 
-		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		expTreeGen = new ExpressionTreeGenerator();
 		
 		return expTreeGen.makeExpression(ourInput);
 		

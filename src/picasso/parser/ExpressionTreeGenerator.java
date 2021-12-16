@@ -26,6 +26,7 @@ public class ExpressionTreeGenerator {
 	private static final int ADD_OR_SUBTRACT = 2;
 	private static final int MULTIPLY_OR_DIVIDE = 3;
 	private static final int EXPONENT = 3;
+	private boolean equalsIncluded= false;
 
 	/**
 	 * Converts the given string into expression tree for easier manipulation.
@@ -138,6 +139,7 @@ public class ExpressionTreeGenerator {
 
 			} else if (token instanceof EqualsToken) {
 				operators.push(token);
+				equalsIncluded=true;
 			} else if (token instanceof LeftParenToken) {
 				operators.push(token);
 			} else if (token instanceof RightParenToken) {
@@ -208,5 +210,9 @@ public class ExpressionTreeGenerator {
 
 		else
 			return CONSTANT;
+	}
+	
+	public boolean equalsIncluded() {
+		return equalsIncluded;
 	}
 }
