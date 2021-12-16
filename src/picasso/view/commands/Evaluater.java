@@ -19,6 +19,7 @@ import picasso.parser.ParseException;
  * 
  * @author Robert C Duvall
  * @author Sara Sprenkle
+ * @author Jackson Jacobs
  */
 public class Evaluater implements Command<Pixmap> {
 	public static final double DOMAIN_MIN = -1;
@@ -29,6 +30,7 @@ public class Evaluater implements Command<Pixmap> {
 	public Evaluater(JTextField box) {
 		this.box= box;
 	}
+	
 	/**
 	 * Evaluate an expression for each point in the image.
 	 */

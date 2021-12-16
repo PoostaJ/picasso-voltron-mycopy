@@ -132,7 +132,6 @@ public class TokenizerTest {
 	public void testTokenizeAssignmentExpression() {
 		String expression= "a=cos(y)";
 		tokens=tokenizer.parseTokens(expression);
-		System.out.println(tokens);
 		assertEquals(new IdentifierToken("a"), tokens.get(0));
 		assertEquals(new EqualsToken(), tokens.get(1));
 		assertEquals(new CosToken(), tokens.get(2));
@@ -174,7 +173,7 @@ public class TokenizerTest {
 	}
 
 
-  @Test
+	@Test
 	public void testTokenizeExpFunctionExpression() {
 		String expression= "exp(y)";
 		tokens= tokenizer.parseTokens(expression);
@@ -184,7 +183,7 @@ public class TokenizerTest {
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
   
-  @Test
+  	@Test
 	public void testTokenizeYCRCB2RGBFunctionExpression() {
 		String expression= "YCRCB2RGB(y)";
 		tokens= tokenizer.parseTokens(expression);
@@ -203,7 +202,7 @@ public class TokenizerTest {
 		assertEquals(new IdentifierToken("y"), tokens.get(2));
 	}
   
-  @Test
+	@Test
 	public void testTokenizeAtanFunctionExpression() {
 		String expression= "atan(y)";
 		tokens= tokenizer.parseTokens(expression);
@@ -213,7 +212,7 @@ public class TokenizerTest {
 		assertEquals(new RightParenToken(), tokens.get(3));
 	}
   
-  @Test
+	@Test
   	public void testTokenizeModFunctionExpression() {
 	  String expression = "x%y";
 	  tokens = tokenizer.parseTokens(expression);
@@ -222,7 +221,7 @@ public class TokenizerTest {
 	  assertEquals(new IdentifierToken("y"), tokens.get(2));
   }
   
-  @Test
+	@Test
   	public void testTokenizeNegateFunction() {
 	  String expression = "!x";
 	  tokens = tokenizer.parseTokens(expression);
@@ -230,7 +229,7 @@ public class TokenizerTest {
 	  assertEquals(new IdentifierToken("x"), tokens.get(1));
   }
   
-  @Test
+	@Test
   	public void testTokenizePerlinColorFunction() {
 	  String expression = "perlinColor(x, y)";
 	  tokens = tokenizer.parseTokens(expression);
@@ -267,5 +266,107 @@ public class TokenizerTest {
 		expression = "perlinBW(x + y)";
 		tokens = tokenizer.parseTokens(expression);
 	}
+	
+	@Test
+	public void testTokenizeCeilFunctionExpression() {
+		String expression= "ceil(.6)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new CeilToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new NumberToken(0.6), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+		
+		expression= "ceil(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new CeilToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+	
+	@Test
+	public void testTokenizeClampFunctionExpression() {
+		String expression= "clamp(x+.1)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new ClampToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		assertEquals(new PlusToken(), tokens.get(3));
+		assertEquals(new NumberToken(0.1), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		
+		expression= "clamp(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new ClampToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+	
+	@Test
+	public void testTokenizeLogFunctionExpression() {
+		String expression= "log(x+.1)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new LogToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		assertEquals(new PlusToken(), tokens.get(3));
+		assertEquals(new NumberToken(0.1), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		
+		expression= "log(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new LogToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+	
+	@Test
+	public void testTokenizeRandomFunctionExpression() {
+		String expression= "random()";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new RandomToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new RightParenToken(), tokens.get(2));
+	}
+	
+	@Test
+	public void testTokenizeWrapFunctionExpression() {
+		String expression= "wrap(x+.1)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new WrapToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("x"), tokens.get(2));
+		assertEquals(new PlusToken(), tokens.get(3));
+		assertEquals(new NumberToken(0.1), tokens.get(4));
+		assertEquals(new RightParenToken(), tokens.get(5));
+		
+		expression= "wrap(y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new WrapToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("y"), tokens.get(2));
+		assertEquals(new RightParenToken(), tokens.get(3));
+	}
+	
+	@Test
+	public void testTokenizeImageWrapFunctionExpression() {
+		String expression= "imageWrap(vortex.jpg,x+x, y)";
+		tokens= tokenizer.parseTokens(expression);
+		assertEquals(new ImageWrapToken(), tokens.get(0));
+		assertEquals(new LeftParenToken(), tokens.get(1));
+		assertEquals(new IdentifierToken("vortex.jpg"), tokens.get(2));
+		assertEquals(new CommaToken(), tokens.get(3));
+		assertEquals(new IdentifierToken("x"), tokens.get(4));
+		assertEquals(new PlusToken(), tokens.get(5));
+		assertEquals(new IdentifierToken("x"), tokens.get(6));
+		assertEquals(new CommaToken(), tokens.get(7));
+		assertEquals(new IdentifierToken("y"), tokens.get(8));
+		assertEquals(new RightParenToken(), tokens.get(9));
+	}
+	
+	
+
 
 }
