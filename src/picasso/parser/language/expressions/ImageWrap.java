@@ -41,7 +41,7 @@ public class ImageWrap extends MultipleArgumentFunction {
 		double evalY= wrap(leftColor.getRed());
 		double evalX= wrap(rightColor.getRed());
 
-		RGBColor newRGB= new RGBColor(img.getColor(widthToInt(evalX), heightToInt(evalY)));
+		RGBColor newRGB= new RGBColor(img.getColor(widthToInt(evalX)-1, heightToInt(evalY)-1));
 		return newRGB;
 	}
 

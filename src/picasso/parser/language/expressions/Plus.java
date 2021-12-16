@@ -5,8 +5,7 @@ import picasso.parser.language.ExpressionTreeNode;
 /**
  * Represents the + operation in the Picasso language.
  * 
- * @author Robert C. Duvall
- * @author Sara Sprenkle
+ * @author Dan Nguyen
  * 
  */
 public class Plus extends BinaryFunction {

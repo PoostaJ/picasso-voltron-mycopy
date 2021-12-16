@@ -7,7 +7,7 @@ import picasso.parser.language.expressions.Ceil;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the floor function.
+ * Handles parsing the ceiling function.
  * 
  * @author Dan Nguyen
  * 

@@ -5,8 +5,7 @@ import picasso.parser.language.ExpressionTreeNode;
 /**
  * Represents the ceil function in the Picasso language.
  * 
- * @author Robert C. Duvall
- * @author Sara Sprenkle
+ * @author Dan Nguyen
  * 
  */
 public class Ceil extends UnaryFunction {
@@ -15,7 +14,7 @@ public class Ceil extends UnaryFunction {
 	/**
 	 * Create a ceil expression that takes as a parameter the given expression
 	 * 
-	 * @param param the expression to ceil
+	 * @param param the expression to ceil function
 	 */
 	public Ceil(ExpressionTreeNode param) {
 		super(param);

@@ -670,16 +670,6 @@ public class EvaluatorTests {
 	}
 
 			
-	@Test
-	public void testImageWrap() {
-		String s= "imageWrap(x,y)";
-		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
-		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
-		for (int i=-1; i<=1; i++) {
-			assertEquals(new RGBColor(i,i,i), expr.evaluate(i, i));
-		}
-		
-	}
 	
 	@Test
 	public void testModEvaluation() {
