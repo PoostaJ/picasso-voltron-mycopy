@@ -20,6 +20,7 @@ public class Assignment {
 	private static Assignment ourInstance;
 	private static HashMap<String, ExpressionTreeNode> ourMap;
 	private static File myFile;
+	private String lastString;
 	
 	/**
 	 * Make sure that there is only one Assignment hashmap for the application.
@@ -53,11 +54,13 @@ public class Assignment {
 	}
 	
 	public void writeToFile(String s) {
+		myFile= new File("varExpressions.txt");
+		
 		try {
-			myFile= new File("varExpressions.txt");
 			FileWriter myWriter = new FileWriter(myFile, true);
 			myWriter.write(s+"\n");
 			myWriter.close();
+			lastString=s;
 			myFile.deleteOnExit();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -80,7 +83,6 @@ public class Assignment {
 		
 		String currentLine;
 		try {
-			
 			while ((currentLine = myReader.readLine()) != null) {
 				sb.append(currentLine);
 				sb.append("\n");

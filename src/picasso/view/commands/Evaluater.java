@@ -52,7 +52,7 @@ public class Evaluater implements Command<Pixmap> {
 			Frame.drawException(e.getMessage());
 			return;
 		}
-		
+		Assignment.getInstance().writeToFile(input);
 		
 		// evaluate it for each pixel
 		Dimension size = target.getSize();

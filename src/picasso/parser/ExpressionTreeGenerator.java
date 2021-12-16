@@ -138,7 +138,6 @@ public class ExpressionTreeGenerator {
 
 			} else if (token instanceof EqualsToken) {
 				operators.push(token);
-				Assignment.getInstance().writeToFile(infix);
 			} else if (token instanceof LeftParenToken) {
 				operators.push(token);
 			} else if (token instanceof RightParenToken) {
