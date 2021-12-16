@@ -44,10 +44,6 @@ public class Exponentiate extends BinaryFunction {
 			return true;
 		}
 		
-		if (left.equals(f.right) && right.equals(f.left)) {
-			return true;
-		}
-		
 		else {
 			return false;
 		}

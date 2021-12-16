@@ -41,11 +41,7 @@ public class Mult extends BinaryFunction {
 		if (left.equals(f.left) && right.equals(f.right)) {
 			return true;
 		}
-		
-		if (left.equals(f.right) && right.equals(f.left)) {
-			return true;
-		}
-		
+	
 		else {
 			return false;
 		}
