@@ -20,7 +20,6 @@ public class Assignment {
 	private static Assignment ourInstance;
 	private static HashMap<String, ExpressionTreeNode> ourMap;
 	private static File myFile;
-	private String lastString;
 	
 	/**
 	 * Make sure that there is only one Assignment hashmap for the application.
@@ -60,7 +59,6 @@ public class Assignment {
 			FileWriter myWriter = new FileWriter(myFile, true);
 			myWriter.write(s+"\n");
 			myWriter.close();
-			lastString=s;
 			myFile.deleteOnExit();
 		} catch (IOException e) {
 			e.printStackTrace();

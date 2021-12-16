@@ -15,6 +15,7 @@ import picasso.parser.tokens.Token;
 
 public class AtanAnalyzer extends UnaryFunctionAnalyzer {
 
+	
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		tokens.pop();

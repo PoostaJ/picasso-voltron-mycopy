@@ -46,6 +46,7 @@ public class Evaluater implements Command<Pixmap> {
 			expr = createExpression(input);
 		}
 		catch (ParseException e) {
+			e.printStackTrace();
 			Frame.drawException(e.getMessage());
 			return;
 		}

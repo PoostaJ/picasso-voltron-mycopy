@@ -51,10 +51,13 @@ public class ExpressionTreeGenerator {
 
 		//System.out.println(postfix);
 		// Is this the best place to put this check?
+		/**
+		 *
 		if (!postfix.isEmpty()) {
 			throw new ParseException(
 					"Extra operands without operators or functions");
 		}
+		*/
 		return root;
 	}
 
