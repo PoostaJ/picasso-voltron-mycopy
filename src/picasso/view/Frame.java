@@ -5,12 +5,10 @@ import java.awt.Dimension;
 import javax.swing.*;
 
 import picasso.model.Pixmap;
-import picasso.parser.language.Assignment;
 import picasso.random.RandomExpressionGenerator;
 import picasso.util.NamedCommand;
 import picasso.util.ThreadedCommand;
 import picasso.view.commands.*;
-import java.awt.event.*;
 
 
 /**

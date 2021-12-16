@@ -5,8 +5,10 @@ import picasso.model.Pixmap;
 import picasso.util.Command;
 import picasso.view.Frame;
 import picasso.Main;
+import javax.swing.JFrame;
 
-public class NewFrame implements Command<Pixmap> {
+@SuppressWarnings("serial")
+public class NewFrame extends JFrame implements Command<Pixmap> {
 
 	public NewFrame() {
 	}
@@ -14,6 +16,7 @@ public class NewFrame implements Command<Pixmap> {
 		Frame NewFrame= new Frame(Main.SIZE);
 		NewFrame.setTitle("Picasso- Voltron");
 		NewFrame.setVisible(true);
+		NewFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		}
 
 }
