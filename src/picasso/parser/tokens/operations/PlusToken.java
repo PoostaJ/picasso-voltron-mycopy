@@ -5,6 +5,7 @@ import picasso.parser.tokens.chars.CharToken;
 
 /**
  * Represents the plus sign token
+ * @author Dan Nguyen
  * 
  */
 public class PlusToken extends CharToken implements OperationInterface {

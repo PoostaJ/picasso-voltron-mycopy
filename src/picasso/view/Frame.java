@@ -15,7 +15,7 @@ import picasso.view.commands.*;
  * Main container for the Picasso application
  *
  * @author Robert Duvall (rcd@cs.duke.edu)
- * @author Jackson Jacobs
+ * @author Jackson Jacobs  - Responsible for TextField and GUI Extensions (Record assignments and Extra Tabs)
  * 
  */
 @SuppressWarnings("serial")

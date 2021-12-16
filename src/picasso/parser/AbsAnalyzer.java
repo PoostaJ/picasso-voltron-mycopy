@@ -8,7 +8,7 @@ import picasso.parser.language.expressions.Abs;
 import picasso.parser.tokens.Token;
 
 /**
- * Handles parsing the floor function.
+ * Handles parsing the absolute function.
  * 
  * @author Patrick Stoffel
  * 

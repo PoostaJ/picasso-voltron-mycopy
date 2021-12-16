@@ -2,6 +2,13 @@ package picasso.parser.language.expressions;
 
 import picasso.parser.language.ExpressionTreeNode;
 
+/**
+ * Represents a function that takes two arguments.
+ * 
+ * @author Patrick Stoffel 
+ *
+ */
+
 public class Negate extends ExpressionTreeNode {
 
 	ExpressionTreeNode param;

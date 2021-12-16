@@ -21,10 +21,10 @@ public class ExponentiateAnalyzer implements SemanticAnalyzerInterface {
 	@Override
 	public ExpressionTreeNode generateExpressionTree(Stack<Token> tokens) {
 		tokens.pop(); 
+		ExpressionTreeNode right= SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
+		ExpressionTreeNode left= SemanticAnalyzer.getInstance().generateExpressionTree(tokens);
 		
-		return new Exponentiate(SemanticAnalyzer.getInstance().generateExpressionTree(
-				tokens), SemanticAnalyzer.getInstance().generateExpressionTree(
-						tokens) );
+		return new Exponentiate(left, right);
 	}
 
 }

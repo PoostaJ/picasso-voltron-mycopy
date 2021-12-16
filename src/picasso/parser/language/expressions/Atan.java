@@ -3,7 +3,7 @@ package picasso.parser.language.expressions;
 import picasso.parser.language.ExpressionTreeNode;
 
 /**
- * Represents the Arctangnet function in the Picasso language.
+ * Represents the Arctangent function in the Picasso language.
  * 
  * @author Jackson Jacobs
  */

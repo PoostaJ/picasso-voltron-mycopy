@@ -15,6 +15,8 @@ import picasso.parser.tokens.chars.RightBracketToken;
 import picasso.parser.tokens.chars.StringToken;
 
 /**
+ * @author Sara Sprenkle
+ * @author Dan Nguyen 			Parsing a string as a token
  * Looks at a generic token and creates the appropriate token type
  */
 public class TokenFactory {

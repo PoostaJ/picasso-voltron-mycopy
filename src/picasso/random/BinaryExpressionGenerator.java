@@ -21,8 +21,8 @@ public class BinaryExpressionGenerator {
 	
 	public BinaryExpressionGenerator(RandomExpressionGenerator expr1) {
 		this.expr1 = expr1;
-		this.expr1.probConstant += 0.1;
-		this.expr1.probUnary += 0.1;
+		this.expr1.probConstant += 0.07;
+		this.expr1.probUnary += 0.07;
 	}
 	
 	public String generate() {

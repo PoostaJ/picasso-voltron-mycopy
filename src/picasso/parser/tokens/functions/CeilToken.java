@@ -2,6 +2,7 @@ package picasso.parser.tokens.functions;
 
 /**
  * Represents the ceiling function token
+ * @author Dan Nguyen
  * 
  */
 

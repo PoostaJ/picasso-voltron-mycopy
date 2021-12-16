@@ -18,8 +18,8 @@ public class RandomExpressionGenerator implements Command<Pixmap> {
 	double probConstant;
 	double probUnary;
 	JTextField box;
-	final static double DEFAULT_CONSTANT = 0.1;
-	final static double DEFAULT_UNARY = 0.3;
+	final static double DEFAULT_CONSTANT = 0.05;
+	final static double DEFAULT_UNARY = 0.5;
 	
 
 	public RandomExpressionGenerator(double probConstant, double probUnary, JTextField box) {	
