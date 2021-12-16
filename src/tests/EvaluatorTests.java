@@ -729,7 +729,7 @@ public class EvaluatorTests {
 	
 	@Test
 	public void testPerlinColorEvaluation() {
-		String s = "(x, y)";
+		String s = "perlinColor(x, y)";
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
 		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
 		for (int i= -1; i<=1; i++) {
