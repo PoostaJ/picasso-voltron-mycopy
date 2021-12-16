@@ -187,5 +187,11 @@ public class ParsedExpressionTreeTests {
 	  assertEquals(new Negate(new X()), e);
   }
   
+  @Test
+  	public void perlinColorFunctionTests() {
+	  ExpressionTreeNode e = parser.makeExpression("perlinColor(x, y)");
+	  assertEquals(new PerlinColor(new X(), new Y()), e);
+  }
+  
 
 }

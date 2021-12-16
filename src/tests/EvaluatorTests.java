@@ -15,6 +15,7 @@ import picasso.parser.SemanticAnalyzer;
 import picasso.parser.language.ExpressionTreeNode;
 import picasso.parser.language.expressions.*;
 import picasso.parser.tokens.Token;
+import picasso.model.ImprovedNoise;
 
 /**
  * Tests of the evaluation of x
@@ -644,7 +645,7 @@ public class EvaluatorTests {
 		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
 		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
 		for (int i= -1; i<=1; i++) {
-			System.out.println(expr.evaluate(i, i));
+			//System.out.println(expr.evaluate(i, i));
 			assertEquals(new RGBColor(i * 0.2989 + i * 0.5866 + i * 0.1145,
 					i * -0.1687 + i * -0.3312 + i * 0.5,
 					i * 0.5000 + i * -0.4183 + i * -0.0816),
@@ -732,6 +733,16 @@ public class EvaluatorTests {
 		expr= expTreeGen.makeExpression(s1);
 		for (int i= -1; i<=1; i++) {
 			assertEquals(new RGBColor(-1,-1,-1), expr.evaluate(i, i));
+		}
+	}
+	
+	@Test
+	public void testPerlinColorEvaluation() {
+		String s = "perlinColor(x, y)";
+		ExpressionTreeGenerator expTreeGen = new ExpressionTreeGenerator();
+		ExpressionTreeNode expr= expTreeGen.makeExpression(s);
+		for (int i= -1; i<=1; i++) {
+			assertEquals(new RGBColor(ImprovedNoise.noise(i + 0.3, i + 0.3, 0), ImprovedNoise.noise(i - 0.8, i - 0.8, 0), ImprovedNoise.noise(i + 0.1, i + 0.1, 0)), expr.evaluate(i, i));
 		}
 	}
 
