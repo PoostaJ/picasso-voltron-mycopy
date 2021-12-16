@@ -21,28 +21,28 @@ public class RandomExpressionGenerator implements Command<Pixmap> {
 		this.box=box;
 	}
 	
-	public String executeS() {
+	public String generate() {
 		
 		double randProp = Math.random();
 		
 				
 		if (randProp < probConstant) {
-			return new ConstantExpressionGenerator(this).execute();
+			return new ConstantExpressionGenerator(this).generate();
 		}
 		
 		else if ( randProp < probUnary  ) {
-			return new UnaryExpressionGenerator(this).execute();
+			return new UnaryExpressionGenerator(this).generate();
 		}
 		
 		else {
-			return new BinaryExpressionGenerator(this).execute();
+			return new BinaryExpressionGenerator(this).generate();
 		}
 		
 	}
 
 	@Override
 	public void execute(Pixmap target) {
-		String expr= this.executeS();
+		String expr= this.generate();
 		this.box.setText(expr);
 	}
 }

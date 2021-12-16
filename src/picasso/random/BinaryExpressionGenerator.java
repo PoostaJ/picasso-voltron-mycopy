@@ -18,9 +18,9 @@ public class BinaryExpressionGenerator {
 		this.expr1.probUnary += 0.1;
 	}
 	
-	public String execute() {
+	public String generate() {
 		
-		return "(" + expr1.executeS() + ")"+ binaryOperator + "(" + expr1.executeS() + ")";
+		return "(" + expr1.generate() + ")"+ binaryOperator + "(" + expr1.generate() + ")";
 		
 	}
 	

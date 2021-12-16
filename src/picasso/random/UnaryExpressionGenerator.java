@@ -20,9 +20,9 @@ public class UnaryExpressionGenerator {
 
 	}
 	
-	public String execute() {	
+	public String generate() {	
 		
-		return unaryFunction + "(" +   expr1.executeS()  + ")";
+		return unaryFunction + "(" +   expr1.generate()  + ")";
 		
 	}
 	

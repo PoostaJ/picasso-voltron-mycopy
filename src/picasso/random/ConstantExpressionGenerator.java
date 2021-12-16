@@ -24,7 +24,7 @@ public class ConstantExpressionGenerator {
 		this.expr1 = expr1;
 	}
 	
-	public String execute() {
+	public String generate() {
 		return "(" + constant + ")";
 	}
 
