@@ -10,6 +10,8 @@ public class RandomExpressionGenerator implements Command<Pixmap> {
 	double probConstant;
 	double probUnary;
 	JTextField box;
+	final static double DEFAULT_CONSTANT = 0.1;
+	final static double DEFAULT_UNARY = 0.3;
 	
 	public static void main(String args[]) {
 		//System.out.println(new RandomExpressionGenerator(0.1,0.3).executeS());
@@ -44,5 +46,7 @@ public class RandomExpressionGenerator implements Command<Pixmap> {
 	public void execute(Pixmap target) {
 		String expr= this.generate();
 		this.box.setText(expr);
+		this.probConstant = DEFAULT_CONSTANT;
+		this.probUnary = DEFAULT_UNARY;	
 	}
 }
